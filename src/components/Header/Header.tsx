@@ -1,4 +1,3 @@
-// src/components/Header/Header.tsx
 import React from 'react';
 import { View, Text } from 'react-native';
 import { styles } from '@/components/Header/styles';
@@ -14,4 +13,3 @@ export const Header: React.FC<HeaderProps> = ({ title }) => {
     </View>
   );
 };
-

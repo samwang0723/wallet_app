@@ -20,6 +20,7 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     marginVertical: SPACING.xs,
+    flexWrap: 'wrap',
   },
   bulletIcon: {
     marginRight: SPACING.sm,
@@ -27,7 +28,12 @@ export const styles = StyleSheet.create({
   },
   bulletText: {
     flex: 1,
+    flexWrap: 'wrap',
+    flexShrink: 1,
     color: COLORS.secondaryText,
     fontSize: 12,
+  },
+  linkStyle: {
+    color: COLORS.primary,
   },
 });

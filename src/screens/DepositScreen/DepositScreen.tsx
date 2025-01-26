@@ -10,14 +10,14 @@ import { styles } from './styles';
 const depositBullets = [
   'Minimum deposit of at least $50 USD',
   'Deposits are usually credited in 1–5 business days',
-  'We charge zero deposit fee. Substantial fees may be applied by your bank...',
-  'To learn more, visit our Help Center',
+  'We charge zero deposit fee. Substantial fees may be applied by your bank, please check prior to sending',
+  'To learn more, visit our https://help.crypto.com',
 ];
 
 const warnings = [
   'The name on your bank account must match the name on your Crypto.com account.',
   'Deposit USD only. Non-USD deposits will be converted at prevalent conversion rates.',
-  'Deposit from an account within Taiwan, Province of China only...',
+  'Deposit from an account within Taiwan, Province of China only. Deposits from overseas bank account can lead to delayed returns and money loss due to intermediary bank fees.',
 ];
 
 // Bank info rows from the screenshot
@@ -34,6 +34,10 @@ const bankInfo = [
     label: 'Recipient Address',
     value:
       'The Offices 4, 8th Floor, One Central, Dubai World Trade Centre, PO Box 452116, Dubai, UAE',
+  },
+  {
+    label: 'SWIFT/BIC',
+    value: 'SCBLAEADXXX',
   },
 ];
 

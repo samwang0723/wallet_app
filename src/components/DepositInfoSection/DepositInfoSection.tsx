@@ -1,8 +1,9 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Linking } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { styles } from './styles';
 import { COLORS } from '../../styles/theme';
+import Hyperlink from 'react-native-hyperlink'
 
 interface DepositInfoSectionProps {
   title: string;
@@ -24,7 +25,17 @@ export const DepositInfoSection: React.FC<DepositInfoSectionProps> = ({
             color={COLORS.text}
             style={styles.bulletIcon}
           />
-          <Text style={styles.bulletText}>{item}</Text>
+          {typeof item === 'string' && item.includes('http') ? (
+            <Hyperlink
+              linkStyle={styles.linkStyle}
+              linkText={url => url === 'https://help.crypto.com' ? 'Help Center' : url}
+              onPress={(url) => Linking.openURL(url)}
+            >
+              <Text style={styles.bulletText}>{item}</Text>
+            </Hyperlink>
+          ) : (
+            <Text style={styles.bulletText}>{item}</Text>
+          )}
         </View>
       ))}
     </View>

@@ -13,7 +13,6 @@ export const styles = StyleSheet.create({
   label: {
     fontSize: 12,
     color: COLORS.secondaryText,
-    // textTransform: 'uppercase',
     marginTop: SPACING.xs,
   },
   valueRow: {
@@ -22,7 +21,7 @@ export const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   value: {
-    fontSize: 14,
+    fontSize: 13,
     color: COLORS.text,
     flexShrink: 1,
     marginRight: SPACING.sm,

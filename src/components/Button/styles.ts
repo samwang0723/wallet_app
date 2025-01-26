@@ -9,7 +9,7 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
   },
   buttonText: {
-    fontSize: 14,
+    fontSize: 13,
     color: COLORS.text,
   },
 });

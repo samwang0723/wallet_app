@@ -15,7 +15,7 @@ export const BankInfoRow: React.FC<BankInfo> = ({ label, value }) => {
     <View style={styles.container}>
       <Text style={styles.label}>{label}</Text>
       <View style={styles.valueRow}>
-        <Text style={styles.value} numberOfLines={2} ellipsizeMode="tail">
+        <Text style={styles.value} ellipsizeMode="tail">
           {value}
         </Text>
         <TouchableOpacity style={styles.copyButton} onPress={handleCopy}>
