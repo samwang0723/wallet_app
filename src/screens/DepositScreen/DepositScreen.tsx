@@ -53,7 +53,7 @@ export const DepositScreen: React.FC = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Header title="USD Bank Transfer" />
+      <Header title="USD Bank Transfer" showBackButton />
       <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>
         {/* Deposit Information Section */}
         <DepositInfoSection title="Deposit Information" bullets={depositBullets} />

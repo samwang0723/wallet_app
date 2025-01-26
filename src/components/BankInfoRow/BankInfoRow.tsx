@@ -5,10 +5,17 @@ import { Ionicons } from '@expo/vector-icons';
 import { styles } from './styles';
 import { BankInfo } from '../../types';
 import { COLORS } from '../../styles/theme';
+import Toast from 'react-native-toast-message';
 
 export const BankInfoRow: React.FC<BankInfo> = ({ label, value }) => {
   const handleCopy = async () => {
     await Clipboard.setStringAsync(value);
+
+    Toast.show({
+      type: 'success',      // 'success' | 'error' | 'info' (or custom)
+      text1: label + ' copied to clipboard !',
+      position: 'bottom',   // Show it at the bottom
+    });
   };
 
   return (
