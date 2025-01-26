@@ -3,8 +3,10 @@ import { COLORS, SPACING } from '../../styles/theme';
 
 export const styles = StyleSheet.create({
   container: {
-    padding: SPACING.md,
-    borderBottomWidth: 1,
+    paddingHorizontal: SPACING.md,
+    paddingTop: SPACING.sm,
+    paddingBottom: SPACING.sm,
+    borderBottomWidth: 0,
     borderBottomColor: COLORS.border,
     backgroundColor: COLORS.background,
   },
@@ -21,10 +23,11 @@ export const styles = StyleSheet.create({
   },
   bulletIcon: {
     marginRight: SPACING.sm,
+    color: COLORS.secondaryText,
   },
   bulletText: {
     flex: 1,
-    color: COLORS.text,
-    fontSize: 14,
+    color: COLORS.secondaryText,
+    fontSize: 12,
   },
 });

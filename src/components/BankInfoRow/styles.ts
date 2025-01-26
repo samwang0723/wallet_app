@@ -13,8 +13,8 @@ export const styles = StyleSheet.create({
   label: {
     fontSize: 12,
     color: COLORS.secondaryText,
-    textTransform: 'uppercase',
-    marginBottom: SPACING.xs,
+    // textTransform: 'uppercase',
+    marginTop: SPACING.xs,
   },
   valueRow: {
     flexDirection: 'row',
@@ -22,10 +22,12 @@ export const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   value: {
-    fontSize: 16,
+    fontSize: 14,
     color: COLORS.text,
     flexShrink: 1,
     marginRight: SPACING.sm,
+    marginTop: SPACING.xs,
+    marginBottom: SPACING.xs,
   },
   copyButton: {
     padding: SPACING.xs,

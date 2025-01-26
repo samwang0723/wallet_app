@@ -11,17 +11,25 @@ export const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: COLORS.background,
   },
-  bottomButton: {
-    padding: SPACING.md,
-    borderTopWidth: 1,
-    borderTopColor: COLORS.border,
-    backgroundColor: COLORS.background,
+  bankInfoCard: {
+    marginHorizontal: SPACING.md,
+    marginVertical: SPACING.xs,
+    borderRadius: 8,
+    overflow: 'hidden',           // So corners stay rounded
+    backgroundColor: COLORS.cardBackground || COLORS.background,
   },
   infoNote: {
     color: COLORS.text,
-    fontSize: 13,
+    fontSize: 12,
     marginHorizontal: 16,
-    marginTop: 8,
-    marginBottom: 16,
+    paddingTop: 8,
+    paddingBottom: 16,
+  },
+  bottomButton: {
+    paddingHorizontal: SPACING.md,
+    paddingVertical: SPACING.lg,
+    borderTopWidth: 0,
+    borderTopColor: COLORS.border,
+    backgroundColor: COLORS.background,
   },
 });

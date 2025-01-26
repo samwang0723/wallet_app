@@ -2,12 +2,12 @@
 import { Dimensions } from 'react-native';
 
 export const COLORS = {
-  primary: '#007AFF',         // Keep the bright iOS blue for buttons
-  background: '#0A0C12',      // Deeper navy/dark color
-  cardBackground: '#1A1B1E',  // For table sections (optional)
+  primary: '#1099f9',         // Keep the bright iOS blue for buttons
+  background: '#0b1326',      // Deeper navy/dark color
+  cardBackground: '#151d30',  // For table sections (optional)
   text: '#FFFFFF',            // White text
-  secondaryText: '#8E8E93',   // Gray for labels
-  border: '#2C2C2E',          // Dark border
+  secondaryText: '#8a92a5',   // Gray for labels
+  border: '#222a3d',          // Dark border
   warning: '#FFA500',         // Orange for exclamation icons
 };
 

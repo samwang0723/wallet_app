@@ -4,9 +4,9 @@ import { COLORS, SPACING } from '../../styles/theme';
 export const styles = StyleSheet.create({
   container: {
     paddingHorizontal: SPACING.md,
-    paddingTop: SPACING.md,
+    paddingTop: SPACING.sm,
     paddingBottom: SPACING.sm,
-    borderBottomWidth: 1,
+    borderBottomWidth: 0,
     borderBottomColor: COLORS.border,
   },
   warningRow: {
@@ -20,6 +20,6 @@ export const styles = StyleSheet.create({
   warningText: {
     flex: 1,
     color: COLORS.text,
-    fontSize: 14,
+    fontSize: 12,
   },
 });
