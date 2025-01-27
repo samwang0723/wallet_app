@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, Linking } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { styles } from './styles';
-import { COLORS } from '../../styles/theme';
+import { COLORS } from '@/styles/theme';
 import Hyperlink from 'react-native-hyperlink'
 
 interface DepositInfoSectionProps {

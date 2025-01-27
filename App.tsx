@@ -1,40 +1,36 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import { DepositScreen } from '@/screens/DepositScreen/DepositScreen';
-import Toast, { BaseToast, ErrorToast, ToastConfig, BaseToastProps } from 'react-native-toast-message';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { DepositScreen } from '@/screens/cash/DepositScreen';
+import { HomeScreen } from '@/screens/cash/HomeScreen';
 
-const toastConfig: ToastConfig = {
-  success: (props: BaseToastProps) => (
-    <BaseToast
-      {...props}
-      style={{ backgroundColor: '#333' }}
-      contentContainerStyle={{ paddingHorizontal: 15 }}
-      text1Style={{
-        fontSize: 14,
-        color: '#fff',
-        flexWrap: 'wrap',      // allow wrapping
-      }}
-      text1NumberOfLines={5}   // allow up to 5 lines (or 0 for no limit)
-    />
-  ),
-  error: (props: BaseToastProps) => (
-    <ErrorToast
-      {...props}
-      text1Style={{
-        fontSize: 14,
-        color: '#fff',
-        flexWrap: 'wrap',
-      }}
-      text1NumberOfLines={5}
-    />
-  ),
-};
+const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
-    <NavigationContainer>
-      <DepositScreen />
-      <Toast config={toastConfig} />
-    </NavigationContainer>
+    <>
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen
+            name="Home"
+            component={HomeScreen}
+            options={{ headerShown: false }} // Optional: hide header
+          />
+          <Stack.Screen
+            name="Deposit"
+            component={DepositScreen}
+            options={{
+              presentation: 'modal', // This makes it slide from bottom
+              animation: 'slide_from_bottom', // Specifically for bottom animation
+              headerShown: false, // Optional: hide header
+              // Optional: customize animation
+              animationDuration: 200, // animation duration in ms
+              gestureEnabled: true, // enable swipe down to dismiss
+              gestureDirection: 'vertical', // swipe direction
+            }}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </>
   );
 }

@@ -8,9 +8,10 @@ import { styles } from './styles';
 interface HeaderProps {
   title: string;
   showBackButton?: boolean; // optional prop to toggle the back button
+  showFaqButton?: boolean; // optional prop to toggle the faq button
 }
 
-export const Header: React.FC<HeaderProps> = ({ title, showBackButton }) => {
+export const Header: React.FC<HeaderProps> = ({ title, showBackButton, showFaqButton }) => {
   const navigation = useNavigation();
 
   const handleBackPress = () => {
@@ -35,7 +36,13 @@ export const Header: React.FC<HeaderProps> = ({ title, showBackButton }) => {
       </View>
 
       {/* Right Container (empty or for future icons) */}
-      <View style={styles.rightContainer} />
+      {showFaqButton ? (
+        <TouchableOpacity style={styles.rightContainer}>
+          <Ionicons name="help-circle" size={24} color="#FFFFFF" />
+        </TouchableOpacity>
+      ) : (
+        <View style={styles.rightContainer} />
+      )}
     </View>
   );
 };

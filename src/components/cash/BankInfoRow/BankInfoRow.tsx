@@ -3,8 +3,8 @@ import { View, Text, TouchableOpacity } from 'react-native';
 import * as Clipboard from 'expo-clipboard';
 import { Ionicons } from '@expo/vector-icons';
 import { styles } from './styles';
-import { BankInfo } from '../../types';
-import { COLORS } from '../../styles/theme';
+import { BankInfo } from '@/types';
+import { COLORS } from '@/styles/theme';
 import Toast from 'react-native-toast-message';
 
 export const BankInfoRow: React.FC<BankInfo> = ({ label, value }) => {

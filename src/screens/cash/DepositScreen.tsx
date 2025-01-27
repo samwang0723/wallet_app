@@ -1,11 +1,39 @@
 import React from 'react';
 import { View, ScrollView, SafeAreaView, Text, FlatList } from 'react-native';
-import { Header } from '../../components/Header/Header';
-import { DepositInfoSection } from '../../components/DepositInfoSection/DepositInfoSection';
-import { WarningsSection } from '../../components/WarningsSection/WarningsSection';
-import { BankInfoRow } from '../../components/BankInfoRow/BankInfoRow';
-import { Button } from '../../components/Button/Button';
+import { Header } from '@/components/cash/Header/Header';
+import { DepositInfoSection } from '@/components/cash/DepositInfoSection/DepositInfoSection';
+import { WarningsSection } from '@/components/cash/WarningsSection/WarningsSection';
+import { BankInfoRow } from '@/components/cash/BankInfoRow/BankInfoRow';
+import { Button } from '@/components/cash/Button/Button';
+import Toast, { BaseToast, ErrorToast, ToastConfig, BaseToastProps } from 'react-native-toast-message';
 import { styles } from './styles';
+
+const toastConfig: ToastConfig = {
+  success: (props: BaseToastProps) => (
+    <BaseToast
+      {...props}
+      style={{ backgroundColor: '#333' }}
+      contentContainerStyle={{ paddingHorizontal: 15 }}
+      text1Style={{
+        fontSize: 14,
+        color: '#fff',
+        flexWrap: 'wrap',
+      }}
+      text1NumberOfLines={5}
+    />
+  ),
+  error: (props: BaseToastProps) => (
+    <ErrorToast
+      {...props}
+      text1Style={{
+        fontSize: 14,
+        color: '#fff',
+        flexWrap: 'wrap',
+      }}
+      text1NumberOfLines={5}
+    />
+  ),
+};
 
 const depositBullets = [
   'Minimum deposit of at least $50 USD',
@@ -81,6 +109,8 @@ export const DepositScreen: React.FC = () => {
       <View style={styles.bottomButton}>
         <Button title="Send Info To Email" onPress={handleSendInfo} />
       </View>
+
+      <Toast config={toastConfig} />
     </SafeAreaView>
   );
 };

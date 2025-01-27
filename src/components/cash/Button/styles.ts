@@ -4,8 +4,8 @@ import { COLORS, SPACING } from '@/styles/theme';
 export const styles = StyleSheet.create({
   button: {
     backgroundColor: COLORS.primary,
-    padding: SPACING.sm,
-    borderRadius: SPACING.xs,
+    padding: SPACING.md,
+    borderRadius: SPACING.sm,
     alignItems: 'center',
   },
   buttonText: {
