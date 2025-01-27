@@ -119,7 +119,7 @@ export const styles = StyleSheet.create({
     fontWeight: '600',
   },
   seeAll: {
-    color: '#0A84FF',
+    color: COLORS.primary,
     fontSize: 14,
   },
   transactionItem: {
@@ -148,7 +148,7 @@ export const styles = StyleSheet.create({
     marginHorizontal: 6,
   },
   transactionStatus: {
-    color: '#34C759',
+    color: '#58c5b5',
     fontSize: 14,
   },
   transactionAmount: {
@@ -166,7 +166,7 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
   },
   tradeButton: {
-    backgroundColor: '#0A84FF',
+    backgroundColor: COLORS.primary,
     width: 60,
     height: 60,
     borderRadius: 30,
