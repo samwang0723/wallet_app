@@ -38,7 +38,7 @@ export const Header: React.FC<HeaderProps> = ({ title, showBackButton, showFaqBu
       {/* Right Container (empty or for future icons) */}
       {showFaqButton ? (
         <TouchableOpacity style={styles.rightContainer}>
-          <Ionicons name="help-circle" size={24} color="#FFFFFF" />
+          <Ionicons name="help-circle-outline" size={24} color="#FFFFFF" />
         </TouchableOpacity>
       ) : (
         <View style={styles.rightContainer} />

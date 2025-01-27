@@ -1,94 +1,72 @@
 import React, { useState } from 'react';
-import { Text, View, TouchableOpacity, FlatList } from 'react-native';
-import {
-  useNavigation,
-} from '@react-navigation/native';
+import { Text, SafeAreaView, View, TouchableOpacity, Image } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { Ionicons } from '@expo/vector-icons';
 import { styles } from './styles';
-import { Transaction } from '@/types';
+import { Header } from '@/components/cash/Header/Header';
 
 export type RootStackParamList = {
   Deposit: undefined;
 };
 
-const transactionsData: Transaction[] = [
-  {
-    id: '1',
-    title: 'Buy Featured 10 Basket',
-    date: '12月 4',
-    status: 'Processed',
-    amount: '$100.00',
-  },
-  {
-    id: '2',
-    title: 'Top 10 Basket → USD',
-    date: '12月 4',
-    status: 'Processed',
-    amount: '+$100.85',
-    isPositive: true,
-  },
-];
 
 export const HomeScreen = () => {
-  const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
   const [isBalanceVisible, setIsBalanceVisible] = useState(true);
-  const toggleBalanceVisibility = () => {
-    setIsBalanceVisible(!isBalanceVisible);
-  };
-  const renderTransaction = ({ item }: { item: Transaction }) => (
-    <View style={styles.transaction}>
-      <Text style={styles.transactionDescription}>{item.title}</Text>
-      <Text style={styles.transactionDate}>{item.date}</Text>
-      <Text style={[styles.transactionAmount, item.amount.startsWith('+') ? styles.positiveAmount : null]}>
-        {item.amount}
-      </Text>
-    </View>
-  );
+  const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
   return (
-    <View style={styles.container}>
-      <View style={styles.header}>
-        <Text style={styles.headerTitle}>USD Account</Text>
+    <SafeAreaView style={styles.container}>
+      {/* Header */}
+      <Header title="" showBackButton showFaqButton />
+
+      {/* Account Type */}
+      <View style={styles.accountType}>
+        <Image
+          source={{ uri: 'https://flagcdn.com/w80/us.png' }}
+          style={styles.flag}
+        />
+        <Text style={styles.accountText}>USD Account</Text>
       </View>
+
+      {/* Balance Section */}
       <View style={styles.balanceContainer}>
-        <Text style={styles.balanceLabel}>Total Balance</Text>
-        <View style={styles.balanceRow}>
-          <Text style={styles.balanceAmount}>
-            {isBalanceVisible ? '$ 0.85 USD' : '****'}
-          </Text>
-          <TouchableOpacity onPress={toggleBalanceVisibility} style={styles.eyeButton}>
+        <View style={styles.balanceLabelContainer}>
+          <Text style={styles.balanceLabel}>Total Balance</Text>
+          <TouchableOpacity
+            onPress={() => setIsBalanceVisible(!isBalanceVisible)}
+            style={styles.eyeButton}
+          >
             <Ionicons
-              name={isBalanceVisible ? 'eye-off' : 'eye'}
-              size={24}
-              color="#666"
+              name={isBalanceVisible ? "eye-outline" : "eye-off-outline"}
+              size={20}
+              color="#8E8E93"
             />
           </TouchableOpacity>
         </View>
+        <Text style={styles.balance}>
+          {isBalanceVisible ? '$ 0.85 USD' : '*****'}
+        </Text>
       </View>
-      <View style={styles.actionsContainer}>
+
+      {/* Action Buttons */}
+      <View style={styles.actionButtons}>
         <TouchableOpacity
           style={styles.actionButton}
           onPress={() => navigation.navigate('Deposit')} // Navigate to Deposit screen
         >
-          <Text style={styles.actionButtonText}>Deposit</Text>
+          <View style={styles.actionIcon}>
+            <Text style={styles.plusMinus}>+</Text>
+          </View>
+          <Text style={styles.actionText}>Deposit</Text>
         </TouchableOpacity>
+
         <TouchableOpacity style={styles.actionButton}>
-          <Text style={styles.actionButtonText}>Withdraw</Text>
+          <View style={styles.actionIcon}>
+            <Text style={styles.plusMinus}>-</Text>
+          </View>
+          <Text style={styles.actionText}>Withdraw</Text>
         </TouchableOpacity>
       </View>
-      <View style={styles.separator} />
-      <View style={styles.transactionsHeader}>
-        <Text style={styles.transactionsTitle}>Recent Transactions</Text>
-        <TouchableOpacity>
-          <Text style={styles.seeAllText}>See All</Text>
-        </TouchableOpacity>
-      </View>
-      <FlatList
-        data={transactionsData}
-        renderItem={renderTransaction}
-        keyExtractor={(item) => item.id}
-        contentContainerStyle={styles.listContent}
-      />
-    </View>
+    </SafeAreaView>
   );
 };

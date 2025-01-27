@@ -32,87 +32,151 @@ export const styles = StyleSheet.create({
     borderTopColor: COLORS.border,
     backgroundColor: COLORS.background,
   },
-  header: {
-    marginBottom: 24,
-  },
-  headerTitle: {
-    fontSize: 24,
-    fontWeight: 'bold',
-  },
-  balanceContainer: {
-    marginBottom: 24,
-  },
-  balanceLabel: {
-    fontSize: 16,
-    color: '#666',
-  },
-  balanceRow: {
+  accountType: {
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: 20,
   },
-  balanceAmount: {
-    fontSize: 32,
-    fontWeight: 'bold',
+  flag: {
+    width: 20,
+    height: 20,
+    borderRadius: 10,
     marginRight: 8,
+    borderWidth: 1,
+    borderColor: 'white',
+  },
+  accountText: {
+    color: 'white',
+    fontSize: 16,
+    fontWeight: '500',
+  },
+  balanceContainer: {
+    alignItems: 'center',
+    marginBottom: 40,
+  },
+  balanceLabelContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 8,
   },
   eyeButton: {
-    padding: 4,
+    padding: 4,  // This creates a larger touchable area
+    marginLeft: 2,  // Space between text and icon
   },
-  actionsContainer: {
+  balanceLabel: {
+    color: '#8E8E93',
+    fontSize: 14,
+  },
+  balance: {
+    color: 'white',
+    fontSize: 26,
+    fontWeight: '600',
+  },
+  actionButtons: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginBottom: 24,
+    justifyContent: 'space-around',
+    paddingHorizontal: 30,
+    marginBottom: 40,
   },
   actionButton: {
-    backgroundColor: '#007AFF',
-    paddingVertical: 12,
-    paddingHorizontal: 24,
-    borderRadius: 8,
+    alignItems: 'center',
   },
-  actionButtonText: {
-    color: '#fff',
-    fontSize: 16,
-    fontWeight: 'bold',
+  actionIcon: {
+    width: 50,
+    height: 50,
+    borderRadius: 25,
+    backgroundColor: '#00254f',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 8,
   },
-  separator: {
-    height: 1,
-    backgroundColor: '#e0e0e0',
-    marginBottom: 16,
+  plusMinus: {
+    color: '#0A84FF',
+    fontSize: 28,
+    fontWeight: '300',
+  },
+  actionText: {
+    color: 'white',
+    fontSize: 14,
+  },
+  transactionsContainer: {
+    flex: 1,
+    paddingHorizontal: 16,
   },
   transactionsHeader: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginBottom: 16,
+    marginBottom: 20,
   },
   transactionsTitle: {
+    color: 'white',
     fontSize: 18,
-    fontWeight: 'bold',
+    fontWeight: '600',
   },
-  seeAllText: {
-    color: '#007AFF',
+  seeAll: {
+    color: '#0A84FF',
+    fontSize: 14,
+  },
+  transactionItem: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 20,
+  },
+  transactionTitle: {
+    color: 'white',
     fontSize: 16,
+    marginBottom: 4,
   },
-  listContent: {
-    paddingBottom: 16,
-  },
-  transaction: {
-    marginBottom: 16,
-  },
-  transactionDescription: {
-    fontSize: 16,
-    fontWeight: 'bold',
+  transactionSubtitle: {
+    flexDirection: 'row',
+    alignItems: 'center',
   },
   transactionDate: {
+    color: '#8E8E93',
     fontSize: 14,
-    color: '#666',
+  },
+  dot: {
+    color: '#8E8E93',
+    marginHorizontal: 6,
+  },
+  transactionStatus: {
+    color: '#34C759',
+    fontSize: 14,
   },
   transactionAmount: {
+    color: 'white',
     fontSize: 16,
-    fontWeight: 'bold',
-    color: '#000',
   },
   positiveAmount: {
     color: '#34C759',
+  },
+  bottomNav: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    paddingVertical: 10,
+    borderTopWidth: 1,
+    borderTopColor: '#1C1C1E',
+  },
+  navItem: {
+    alignItems: 'center',
+  },
+  tradeButton: {
+    backgroundColor: '#0A84FF',
+    width: 60,
+    height: 60,
+    borderRadius: 30,
+    justifyContent: 'center',
+    marginTop: -30,
+  },
+  navText: {
+    color: '#8E8E93',
+    fontSize: 12,
+    marginTop: 4,
+  },
+  tradeText: {
+    color: 'white',
   },
 });
