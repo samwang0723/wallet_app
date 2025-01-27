@@ -5,11 +5,29 @@ import { StackNavigationProp } from '@react-navigation/stack';
 import { Ionicons } from '@expo/vector-icons';
 import { styles } from './styles';
 import { Header } from '@/components/cash/Header/Header';
+import { Transaction } from '@/types';
 
 export type RootStackParamList = {
   Deposit: undefined;
 };
 
+const transactions: Transaction[] = [
+  {
+    id: '1',
+    title: 'Buy Featured 10 Basket',
+    date: '12月 4',
+    status: 'Processed',
+    amount: '$100.00',
+  },
+  {
+    id: '2',
+    title: 'Top 10 Basket → USD',
+    date: '12月 4',
+    status: 'Processed',
+    amount: '+$100.85',
+    isPositive: true,
+  },
+];
 
 export const HomeScreen = () => {
   const [isBalanceVisible, setIsBalanceVisible] = useState(true);
@@ -66,6 +84,33 @@ export const HomeScreen = () => {
           </View>
           <Text style={styles.actionText}>Withdraw</Text>
         </TouchableOpacity>
+      </View>
+
+      {/* Transactions Section */}
+      <View style={styles.transactionsContainer}>
+        <View style={styles.transactionsHeader}>
+          <Text style={styles.transactionsTitle}>Recent Transactions</Text>
+          <TouchableOpacity>
+            <Text style={styles.seeAll}>See All</Text>
+          </TouchableOpacity>
+        </View>
+
+        {/* Transaction List */}
+        {transactions.map((transaction) => (
+          <View key={transaction.id} style={styles.transactionItem}>
+            <View>
+              <Text style={styles.transactionTitle}>{transaction.title}</Text>
+              <View style={styles.transactionSubtitle}>
+                <Text style={styles.transactionDate}>{transaction.date}</Text>
+                <Text style={styles.dot}>•</Text>
+                <Text style={styles.transactionStatus}>{transaction.status}</Text>
+              </View>
+            </View>
+            <Text style={styles.transactionAmount}>
+              {transaction.amount}
+            </Text>
+          </View>
+        ))}
       </View>
     </SafeAreaView>
   );

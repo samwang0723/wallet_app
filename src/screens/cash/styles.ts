@@ -101,14 +101,17 @@ export const styles = StyleSheet.create({
     fontSize: 14,
   },
   transactionsContainer: {
-    flex: 1,
-    paddingHorizontal: 16,
+    marginHorizontal: SPACING.md,
+    marginVertical: SPACING.xs,
+    borderRadius: 8,
+    overflow: 'hidden',           // So corners stay rounded
+    backgroundColor: COLORS.cardBackground || COLORS.background,
   },
   transactionsHeader: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginBottom: 20,
+    margin: 20,
   },
   transactionsTitle: {
     color: 'white',
@@ -123,7 +126,9 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
+    marginHorizontal: 20,
     marginBottom: 20,
+    paddingLeft: 20,
   },
   transactionTitle: {
     color: 'white',
@@ -149,9 +154,6 @@ export const styles = StyleSheet.create({
   transactionAmount: {
     color: 'white',
     fontSize: 16,
-  },
-  positiveAmount: {
-    color: '#34C759',
   },
   bottomNav: {
     flexDirection: 'row',
