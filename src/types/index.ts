@@ -10,8 +10,4 @@ export interface Transaction {
   status: string;
   amount: string;
   isPositive?: boolean;
-}
-
-export interface TransactionSectionProps {
-  transactions: Transaction[];
-}
+} 

@@ -4,7 +4,7 @@ import { Header } from '@/components/cash/Header/Header';
 import { DepositInfoSection } from '@/components/cash/DepositInfoSection/DepositInfoSection';
 import { WarningsSection } from '@/components/cash/WarningsSection/WarningsSection';
 import { BankInfoRow } from '@/components/cash/BankInfoRow/BankInfoRow';
-import { Button } from '@/components/cash/Button/Button';
+import { EmailButton } from '@/components/cash/EmailButton/EmailButton';
 import Toast, { BaseToast, ErrorToast, ToastConfig, BaseToastProps } from 'react-native-toast-message';
 import { styles } from './styles';
 
@@ -107,7 +107,7 @@ export const DepositScreen: React.FC = () => {
       </ScrollView>
 
       <View style={styles.bottomButton}>
-        <Button title="Send Info To Email" onPress={handleSendInfo} />
+        <EmailButton title="Send Info To Email" onPress={handleSendInfo} />
       </View>
 
       <Toast config={toastConfig} />

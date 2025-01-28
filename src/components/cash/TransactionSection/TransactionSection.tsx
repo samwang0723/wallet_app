@@ -1,8 +1,11 @@
 import React from 'react';
 import { Text, View, TouchableOpacity } from 'react-native';
 import { styles } from './styles';
-import { TransactionSectionProps } from '@/types';
+import { Transaction } from '@/types';
 
+interface TransactionSectionProps {
+  transactions: Transaction[];
+}
 
 export const TransactionSection: React.FC<TransactionSectionProps> = ({ transactions }) => {
   return (
