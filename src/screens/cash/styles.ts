@@ -45,10 +45,10 @@ export const styles = StyleSheet.create({
     borderRadius: 10,
     marginRight: 8,
     borderWidth: 1,
-    borderColor: 'white',
+    borderColor: COLORS.text,
   },
   accountText: {
-    color: 'white',
+    color: COLORS.text,
     fontSize: 14,
     fontWeight: '500',
   },
@@ -66,11 +66,11 @@ export const styles = StyleSheet.create({
     marginLeft: 2,  // Space between text and icon
   },
   balanceLabel: {
-    color: '#8E8E93',
+    color: COLORS.secondaryText,
     fontSize: 12,
   },
   balance: {
-    color: 'white',
+    color: COLORS.text,
     fontSize: 24,
     fontWeight: '600',
   },
@@ -87,26 +87,19 @@ export const styles = StyleSheet.create({
     width: 50,
     height: 50,
     borderRadius: 25,
-    backgroundColor: '#00254f',
+    backgroundColor: COLORS.actionButtonBackground,
     justifyContent: 'center',
     alignItems: 'center',
     marginBottom: 8,
   },
   plusMinus: {
-    color: '#0A84FF',
+    color: COLORS.primary,
     fontSize: 28,
     fontWeight: '300',
   },
   actionText: {
-    color: 'white',
+    color: COLORS.text,
     fontSize: 12,
-  },
-  bottomNav: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    paddingVertical: 10,
-    borderTopWidth: 1,
-    borderTopColor: '#1C1C1E',
   },
   navItem: {
     alignItems: 'center',
@@ -119,14 +112,6 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     marginTop: -30,
   },
-  navText: {
-    color: '#8E8E93',
-    fontSize: 12,
-    marginTop: 4,
-  },
-  tradeText: {
-    color: 'white',
-  },
   transactionItem: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -136,7 +121,7 @@ export const styles = StyleSheet.create({
     paddingLeft: 20,
   },
   transactionTitle: {
-    color: 'white',
+    color: COLORS.text,
     fontSize: 12,
     marginBottom: 4,
   },
@@ -145,19 +130,19 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
   },
   transactionDate: {
-    color: '#8E8E93',
+    color: COLORS.secondaryText,
     fontSize: 12,
   },
   dot: {
-    color: '#8E8E93',
+    color: COLORS.secondaryText,
     marginHorizontal: 6,
   },
   transactionStatus: {
-    color: '#58c5b5',
+    color: COLORS.transactionStatus,
     fontSize: 12,
   },
   transactionAmount: {
-    color: 'white',
+    color: COLORS.text,
     fontSize: 14,
   },
   /* Option rows */

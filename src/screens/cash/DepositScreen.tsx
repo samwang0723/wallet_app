@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, ScrollView, SafeAreaView, Text, FlatList } from 'react-native';
 import { Header } from '@/components/cash/Header/Header';
 import { DepositInfoSection } from '@/components/cash/DepositInfoSection/DepositInfoSection';
@@ -8,16 +8,17 @@ import { EmailButton } from '@/components/cash/EmailButton/EmailButton';
 import Toast, { BaseToast, ErrorToast, ToastConfig, BaseToastProps } from 'react-native-toast-message';
 import { styles } from './styles';
 import { VendorSelector } from '@/components/cash/VendorSelector/VendorSelector';
+import { COLORS } from '@/styles/theme';
 
 const toastConfig: ToastConfig = {
   success: (props: BaseToastProps) => (
     <BaseToast
       {...props}
-      style={{ backgroundColor: '#333' }}
+      style={{ backgroundColor: COLORS.toastBackground }}
       contentContainerStyle={{ paddingHorizontal: 15 }}
       text1Style={{
         fontSize: 14,
-        color: '#fff',
+        color: COLORS.text,
         flexWrap: 'wrap',
       }}
       text1NumberOfLines={5}
@@ -28,7 +29,7 @@ const toastConfig: ToastConfig = {
       {...props}
       text1Style={{
         fontSize: 14,
-        color: '#fff',
+        color: COLORS.text,
         flexWrap: 'wrap',
       }}
       text1NumberOfLines={5}
@@ -49,7 +50,7 @@ const warnings = [
   'Deposit from an account within Taiwan, Province of China only. Deposits from overseas bank account can lead to delayed returns and money loss due to intermediary bank fees.',
 ];
 
-// Bank info rows from the screenshot
+// Dummy Bank info sample
 const bankInfo = [
   { label: 'IBAN', value: 'AE360446417770350161683' },
   { label: 'Bank Name', value: 'Standard Chartered Bank UAE' },
@@ -70,7 +71,14 @@ const bankInfo = [
   },
 ];
 
+const bankInfo2 = [
+  { label: 'Payment Email', value: 'eTransfer.payper@crypto.com' },
+  { label: 'Identification Numner', value: '123456789' },
+];
+
 export const DepositScreen: React.FC = () => {
+  const [selectedVendor, setSelectedVendor] = useState<string>('Payper'); // Default to 'Payper' or your preferred default
+
   const handleSendInfo = () => {
     console.log('Send info button pressed');
   };
@@ -79,6 +87,8 @@ export const DepositScreen: React.FC = () => {
   const renderBankInfoItem = ({ item }: { item: { label: string; value: string } }) => {
     return <BankInfoRow label={item.label} value={item.value} />;
   };
+
+  const currentBankInfo = selectedVendor === 'Payper' ? bankInfo : bankInfo2;
 
   return (
     <SafeAreaView style={styles.container}>
@@ -95,6 +105,7 @@ export const DepositScreen: React.FC = () => {
           selectedVendor="Payper"
           onVendorSelect={(vendor: string) => {
             console.log('Vendor selected:', vendor);
+            setSelectedVendor(vendor);
           }}
         />
 
@@ -106,7 +117,7 @@ export const DepositScreen: React.FC = () => {
         {/* Rounded Card for Bank Info Rows */}
         <View style={styles.bankInfoCard}>
           <FlatList
-            data={bankInfo}
+            data={currentBankInfo}
             keyExtractor={(_, index) => index.toString()}
             renderItem={renderBankInfoItem}
             ItemSeparatorComponent={() => null}      // remove any default line separators
@@ -116,7 +127,7 @@ export const DepositScreen: React.FC = () => {
       </ScrollView>
 
       <View style={styles.bottomButton}>
-        <EmailButton onPress={handleSendInfo} code='1234' />
+        <EmailButton onPress={handleSendInfo} code='CDCW' timeout={10} />
       </View>
 
       <Toast config={toastConfig} />

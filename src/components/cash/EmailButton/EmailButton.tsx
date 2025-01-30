@@ -4,11 +4,12 @@ import { styles } from './styles';
 
 interface ButtonProps {
   code: string;
+  timeout: number;
   onPress: () => void;
 }
 
-export const EmailButton: React.FC<ButtonProps> = ({ code, onPress }) => {
-  const [countdown, setCountdown] = useState(59);
+export const EmailButton: React.FC<ButtonProps> = ({ code, timeout, onPress }) => {
+  const [countdown, setCountdown] = useState(timeout);
   const [isTimerActive, setIsTimerActive] = useState(false);
 
   useEffect(() => {
@@ -32,7 +33,7 @@ export const EmailButton: React.FC<ButtonProps> = ({ code, onPress }) => {
   const handlePress = () => {
     onPress();
     setIsTimerActive(true);
-    setCountdown(59);
+    setCountdown(timeout);
   };
 
   const isButtonDisabled = isTimerActive && countdown > 0;

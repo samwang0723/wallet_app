@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { styles } from './styles';
+import { COLORS } from '@/styles/theme';
 
 interface WarningsSectionProps {
   warnings: string[];
@@ -15,7 +16,7 @@ export const WarningsSection: React.FC<WarningsSectionProps> = ({ warnings }) =>
           <Ionicons
             name="alert-circle-outline"
             size={20}
-            color="#FFA500" // or any color you prefer for the icon
+            color={COLORS.warning} // or any color you prefer for the icon
             style={styles.warningIcon}
           />
           <Text style={styles.warningText}>{warning}</Text>

@@ -16,7 +16,7 @@ export const styles = StyleSheet.create({
     margin: 20,
   },
   transactionsTitle: {
-    color: 'white',
+    color: COLORS.text,
     fontSize: 14,
     fontWeight: '600',
   },
@@ -33,7 +33,7 @@ export const styles = StyleSheet.create({
     paddingLeft: 20,
   },
   transactionTitle: {
-    color: 'white',
+    color: COLORS.text,
     fontSize: 12,
     marginBottom: 4,
   },
@@ -42,19 +42,19 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
   },
   transactionDate: {
-    color: '#8E8E93',
+    color: COLORS.secondaryText,
     fontSize: 12,
   },
   dot: {
-    color: '#8E8E93',
+    color: COLORS.secondaryText,
     marginHorizontal: 6,
   },
   transactionStatus: {
-    color: '#58c5b5',
+    color: COLORS.transactionStatus,
     fontSize: 12,
   },
   transactionAmount: {
-    color: 'white',
+    color: COLORS.text,
     fontSize: 14,
   },
 });

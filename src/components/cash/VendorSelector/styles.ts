@@ -26,7 +26,7 @@ export const styles = StyleSheet.create({
   /* Modal backdrop */
   modalOverlay: {
     flex: 1,
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    backgroundColor: COLORS.modalBackground,
     // By default, tapping the overlay will close the modal in VendorSelector
   },
 

@@ -4,6 +4,7 @@ import { View, Text, TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import { styles } from './styles';
+import { COLORS } from '@/styles/theme';
 
 interface HeaderProps {
   title: string;
@@ -32,7 +33,7 @@ export const Header: React.FC<HeaderProps> = ({
           style={styles.leftContainer}
           onPress={handleBackPress}
         >
-          <Ionicons name="arrow-back" size={24} color="#FFFFFF" />
+          <Ionicons name="arrow-back" size={24} color={COLORS.text} />
         </TouchableOpacity>
       ) : (
         // Even if there's no back button, keep left container for layout
@@ -48,7 +49,7 @@ export const Header: React.FC<HeaderProps> = ({
       <View style={styles.rightContainer}>
         {showFaqButton && (
           <TouchableOpacity>
-            <Ionicons name="help-circle-outline" size={24} color="#FFFFFF" />
+            <Ionicons name="help-circle-outline" size={24} color={COLORS.text} />
           </TouchableOpacity>
         )}
         {showInfoButton && (
@@ -56,7 +57,7 @@ export const Header: React.FC<HeaderProps> = ({
             <Ionicons
               name="information-circle-outline"
               size={24}
-              color="#FFFFFF"
+              color={COLORS.text}
             />
           </TouchableOpacity>
         )}

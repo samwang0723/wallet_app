@@ -41,7 +41,7 @@ export const styles = StyleSheet.create({
     width: '100%',
   },
   buttonDisabled: {
-    backgroundColor: COLORS.disabledBackground
+    backgroundColor: COLORS.primaryDisable,
   },
   buttonText: {
     color: COLORS.text,
@@ -49,6 +49,6 @@ export const styles = StyleSheet.create({
     textAlign: 'center',
   },
   buttonTextDisabled: {
-    color: COLORS.disabledText
+    color: COLORS.textDisabled,
   },
 });
