@@ -99,8 +99,8 @@ export const HomeScreen = () => {
           <TouchableOpacity
             style={styles.actionButton}
             onPress={() =>
-              navigation.navigate('ChooseWithdraw', { bankAccounts })
-            } // Navigate to ChooseWithdraw screen
+              navigation.navigate('ChooseBankAccount', { bankAccounts })
+            } // Navigate to ChooseBankAccount screen
           >
             <View style={styles.actionIcon}>
               <Text style={styles.plusMinus}>-</Text>

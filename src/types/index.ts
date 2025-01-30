@@ -24,7 +24,8 @@ export type RootStackParamList = {
   Transaction: {
     transactions: Transaction[];
   };
-  ChooseWithdraw: {
+  ChooseBankAccount: {
     bankAccounts: BankAccount[];
   };
+  InitWithdrawal: undefined;
 };

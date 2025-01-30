@@ -5,7 +5,8 @@ import { DepositScreen } from '@/screens/cash/DepositScreen';
 import { HomeScreen } from '@/screens/cash/HomeScreen';
 import { TransactionScreen } from '@/screens/cash/TransactionScreen';
 import { RootStackParamList } from '@/types';
-import { ChooseWithdrawScreen } from '@/screens/cash/ChooseWithdrawScreen';
+import { ChooseBankAccountScreen } from '@/screens/cash/ChooseBankAccountScreen';
+import { InitWithdrawalScreen } from '@/screens/cash/InitWithdrawalScreen';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -38,10 +39,16 @@ export default function App() {
             options={{ headerShown: false }} // Optional: hide header
           />
           <Stack.Screen
-            name="ChooseWithdraw"
-            component={ChooseWithdrawScreen}
+            name="ChooseBankAccount"
+            component={ChooseBankAccountScreen}
             options={{ headerShown: false }} // Optional: hide header
           />
+          <Stack.Screen
+            name="InitWithdrawal"
+            component={InitWithdrawalScreen}
+            options={{ headerShown: false }} // Optional: hide header
+          />
+
         </Stack.Navigator>
       </NavigationContainer>
     </>

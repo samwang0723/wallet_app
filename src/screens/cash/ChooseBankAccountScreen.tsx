@@ -5,29 +5,30 @@ import { RootStackParamList } from '@/types';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Header } from '@/components/cash/Header/Header';
 import { StackNavigationProp } from '@react-navigation/stack';
-import { RouteProp } from '@react-navigation/native';
+import { RouteProp, useNavigation } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
 import { COLORS } from '@/styles/theme';
 
-type ChooseWithdrawScreenNavigationProp = StackNavigationProp<
+type ChooseBankAccountScreenNavigationProp = StackNavigationProp<
   RootStackParamList,
-  'ChooseWithdraw'
+  'ChooseBankAccount'
 >;
 
-type ChooseWithdrawScreenRouteProp = RouteProp<
+type ChooseBankAccountScreenRouteProp = RouteProp<
   RootStackParamList,
-  'ChooseWithdraw'
+  'ChooseBankAccount'
 >;
 
-type ChooseWithdrawScreenProps = {
-  navigation: ChooseWithdrawScreenNavigationProp;
-  route: ChooseWithdrawScreenRouteProp;
+type ChooseBankAccountScreenProps = {
+  navigation: ChooseBankAccountScreenNavigationProp;
+  route: ChooseBankAccountScreenRouteProp;
 };
 
-export const ChooseWithdrawScreen: React.FC<ChooseWithdrawScreenProps> = ({
+export const ChooseBankAccountScreen: React.FC<ChooseBankAccountScreenProps> = ({
   route,
 }) => {
   const { bankAccounts } = route.params;
+  const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
   return (
     <SafeAreaView style={styles.container}>
       <Header title="Choose Withdrawal Email" showBackButton showInfoButton />
@@ -38,7 +39,7 @@ export const ChooseWithdrawScreen: React.FC<ChooseWithdrawScreenProps> = ({
             <TouchableOpacity
               key={bankAccount.accountName}
               style={styles.optionRow}
-              onPress={() => { }}
+              onPress={() => { navigation.navigate('InitWithdrawal'); }}
             >
               <Text style={styles.optionText}>{bankAccount.accountName}</Text>
               <Ionicons
