@@ -11,15 +11,20 @@ export const styles = StyleSheet.create({
   },
   warningRow: {
     flexDirection: 'row',
-    alignItems: 'center',
+    alignItems: 'flex-start',
     marginVertical: SPACING.xs,
   },
   warningIcon: {
     marginRight: SPACING.sm,
   },
   warningText: {
-    flex: 1,
     color: COLORS.text,
     fontSize: 12,
+    flex: 1,
+    flexWrap: 'wrap',
+    flexShrink: 1,
+  },
+  linkStyle: {
+    color: COLORS.primary,
   },
 });

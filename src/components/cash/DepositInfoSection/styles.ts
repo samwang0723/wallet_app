@@ -15,7 +15,7 @@ export const styles = StyleSheet.create({
     color: COLORS.text,
     marginBottom: SPACING.sm,
   },
-  bulletItem: {
+  bulletRow: {
     flexDirection: 'row',
     alignItems: 'center',
     marginVertical: SPACING.xs,

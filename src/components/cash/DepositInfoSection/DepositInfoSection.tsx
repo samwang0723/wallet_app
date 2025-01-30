@@ -3,7 +3,7 @@ import { View, Text, Linking } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { styles } from './styles';
 import { COLORS } from '@/styles/theme';
-import Hyperlink from 'react-native-hyperlink'
+import { parseLinkInText } from '@/utils';
 
 interface DepositInfoSectionProps {
   title: string;
@@ -18,24 +18,34 @@ export const DepositInfoSection: React.FC<DepositInfoSectionProps> = ({
     <View style={styles.container}>
       <Text style={styles.title}>{title}</Text>
       {bullets.map((item, index) => (
-        <View key={index} style={styles.bulletItem}>
+        <View key={index} style={styles.bulletRow}>
           <Ionicons
             name="ellipse"
             size={6}
             color={COLORS.text}
             style={styles.bulletIcon}
           />
-          {typeof item === 'string' && item.includes('http') ? (
-            <Hyperlink
-              linkStyle={styles.linkStyle}
-              linkText={url => url === 'https://help.crypto.com' ? 'Help Center' : url}
-              onPress={(url) => Linking.openURL(url)}
-            >
-              <Text style={styles.bulletText}>{item}</Text>
-            </Hyperlink>
-          ) : (
-            <Text style={styles.bulletText}>{item}</Text>
-          )}
+          {/* Wrap Text inside a View with flex: 1 */}
+          <View style={{ flex: 1 }}>
+            <Text style={styles.bulletText}>
+              {parseLinkInText(item).map((part, idx) => {
+                if (part.type === 'text') {
+                  return part.text; // Return plain text directly
+                } else if (part.type === 'link' && part.text && part.url) {
+                  return (
+                    <Text
+                      key={idx}
+                      style={styles.linkStyle}
+                      onPress={() => Linking.openURL(part.url)}
+                    >
+                      {part.text}
+                    </Text>
+                  );
+                }
+                return null;
+              })}
+            </Text>
+          </View>
         </View>
       ))}
     </View>

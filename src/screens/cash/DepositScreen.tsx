@@ -5,7 +5,12 @@ import { DepositInfoSection } from '@/components/cash/DepositInfoSection/Deposit
 import { WarningsSection } from '@/components/cash/WarningsSection/WarningsSection';
 import { BankInfoRow } from '@/components/cash/BankInfoRow/BankInfoRow';
 import { EmailButton } from '@/components/cash/EmailButton/EmailButton';
-import Toast, { BaseToast, ErrorToast, ToastConfig, BaseToastProps } from 'react-native-toast-message';
+import Toast, {
+  BaseToast,
+  ErrorToast,
+  ToastConfig,
+  BaseToastProps,
+} from 'react-native-toast-message';
 import { styles } from './styles';
 import { VendorSelector } from '@/components/cash/VendorSelector/VendorSelector';
 import { COLORS } from '@/styles/theme';
@@ -41,13 +46,18 @@ const depositBullets = [
   'Minimum deposit of at least $50 USD',
   'Deposits are usually credited in 1–5 business days',
   'We charge zero deposit fee. Substantial fees may be applied by your bank, please check prior to sending',
-  'To learn more, visit our https://help.crypto.com',
+  'To learn more, visit our (Help Center)https://help.crypto.com',
 ];
 
 const warnings = [
   'The name on your bank account must match the name on your Crypto.com account.',
   'Deposit USD only. Non-USD deposits will be converted at prevalent conversion rates.',
   'Deposit from an account within Taiwan, Province of China only. Deposits from overseas bank account can lead to delayed returns and money loss due to intermediary bank fees.',
+];
+
+const warnings2 = [
+  'The name on your bank account must match the name on your Crypto.com account.',
+  'You must include the Identification Number below in your bank transfer for us to identify your deposit (Test)http://www.google.com. If you made a deposit but forgot to include it or made a mistake? (Tap here)https://help.crypto.com',
 ];
 
 // Dummy Bank info sample
@@ -76,33 +86,47 @@ const bankInfo2 = [
   { label: 'Identification Numner', value: '123456789' },
 ];
 
+const vendorOptions = ['Payper', 'DC Bank'];
+
 export const DepositScreen: React.FC = () => {
-  const [selectedVendor, setSelectedVendor] = useState<string>('Payper'); // Default to 'Payper' or your preferred default
+  const [selectedVendor, setSelectedVendor] = useState<string>(
+    vendorOptions[0]
+  ); // Default to 'Payper' or your preferred default
 
   const handleSendInfo = () => {
     console.log('Send info button pressed');
   };
 
   // Renders each bank info row
-  const renderBankInfoItem = ({ item }: { item: { label: string; value: string } }) => {
+  const renderBankInfoItem = ({
+    item,
+  }: {
+    item: { label: string; value: string };
+  }) => {
     return <BankInfoRow label={item.label} value={item.value} />;
   };
 
-  const currentBankInfo = selectedVendor === 'Payper' ? bankInfo : bankInfo2;
+  const currentBankInfo =
+    selectedVendor === vendorOptions[0] ? bankInfo : bankInfo2;
+  const currentWarnings =
+    selectedVendor === vendorOptions[0] ? warnings : warnings2;
 
   return (
     <SafeAreaView style={styles.container}>
       <Header title="USD Bank Transfer" showBackButton />
       <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>
         {/* Deposit Information Section */}
-        <DepositInfoSection title="Deposit Information" bullets={depositBullets} />
+        <DepositInfoSection
+          title="Deposit Information"
+          bullets={depositBullets}
+        />
 
         {/* Warnings Section */}
-        <WarningsSection warnings={warnings} />
+        <WarningsSection warnings={currentWarnings} />
 
         <VendorSelector
-          vendorOptions={['Payper', 'DC Bank']}
-          selectedVendor="Payper"
+          vendorOptions={vendorOptions}
+          selectedVendor={vendorOptions[0]}
           onVendorSelect={(vendor: string) => {
             console.log('Vendor selected:', vendor);
             setSelectedVendor(vendor);
@@ -120,14 +144,14 @@ export const DepositScreen: React.FC = () => {
             data={currentBankInfo}
             keyExtractor={(_, index) => index.toString()}
             renderItem={renderBankInfoItem}
-            ItemSeparatorComponent={() => null}      // remove any default line separators
-            scrollEnabled={false}                    // disable scroll to avoid nested scrolling
+            ItemSeparatorComponent={() => null} // remove any default line separators
+            scrollEnabled={false} // disable scroll to avoid nested scrolling
           />
         </View>
       </ScrollView>
 
       <View style={styles.bottomButton}>
-        <EmailButton onPress={handleSendInfo} code='CDCW' timeout={10} />
+        <EmailButton onPress={handleSendInfo} code="CDCW" timeout={10} />
       </View>
 
       <Toast config={toastConfig} />
