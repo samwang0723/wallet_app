@@ -107,7 +107,7 @@ export const DepositScreen: React.FC = () => {
       </ScrollView>
 
       <View style={styles.bottomButton}>
-        <EmailButton title="Send Info To Email" onPress={handleSendInfo} />
+        <EmailButton onPress={handleSendInfo} code='1234' />
       </View>
 
       <Toast config={toastConfig} />

@@ -9,6 +9,8 @@ export const COLORS = {
   secondaryText: '#8a92a5',   // Gray for labels
   border: '#222a3d',          // Dark border
   warning: '#FFA500',         // Orange for exclamation icons
+  disabledBackground: '#666', // Lighter grey for disabled buttons
+  disabledText: '#ccc',       // Lighter grey for disabled text
 };
 
 export const SPACING = {

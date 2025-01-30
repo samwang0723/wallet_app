@@ -27,7 +27,8 @@ export const styles = StyleSheet.create({
   },
   bottomButton: {
     paddingHorizontal: SPACING.md,
-    paddingVertical: SPACING.lg,
+    paddingTop: SPACING.xs,
+    paddingBottom: SPACING.md,
     borderTopWidth: 0,
     borderTopColor: COLORS.border,
     backgroundColor: COLORS.background,
