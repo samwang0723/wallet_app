@@ -49,7 +49,7 @@ export const styles = StyleSheet.create({
   },
   accountText: {
     color: 'white',
-    fontSize: 16,
+    fontSize: 14,
     fontWeight: '500',
   },
   balanceContainer: {
@@ -67,11 +67,11 @@ export const styles = StyleSheet.create({
   },
   balanceLabel: {
     color: '#8E8E93',
-    fontSize: 14,
+    fontSize: 12,
   },
   balance: {
     color: 'white',
-    fontSize: 26,
+    fontSize: 24,
     fontWeight: '600',
   },
   actionButtons: {
@@ -99,7 +99,7 @@ export const styles = StyleSheet.create({
   },
   actionText: {
     color: 'white',
-    fontSize: 14,
+    fontSize: 12,
   },
   bottomNav: {
     flexDirection: 'row',
@@ -126,5 +126,38 @@ export const styles = StyleSheet.create({
   },
   tradeText: {
     color: 'white',
+  },
+  transactionItem: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginHorizontal: 20,
+    marginBottom: 20,
+    paddingLeft: 20,
+  },
+  transactionTitle: {
+    color: 'white',
+    fontSize: 12,
+    marginBottom: 4,
+  },
+  transactionSubtitle: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  transactionDate: {
+    color: '#8E8E93',
+    fontSize: 12,
+  },
+  dot: {
+    color: '#8E8E93',
+    marginHorizontal: 6,
+  },
+  transactionStatus: {
+    color: '#58c5b5',
+    fontSize: 12,
+  },
+  transactionAmount: {
+    color: 'white',
+    fontSize: 14,
   },
 });

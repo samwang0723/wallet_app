@@ -3,8 +3,10 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { DepositScreen } from '@/screens/cash/DepositScreen';
 import { HomeScreen } from '@/screens/cash/HomeScreen';
+import { TransactionScreen } from '@/screens/cash/TransactionScreen';
+import { RootStackParamList } from '@/types';
 
-const Stack = createNativeStackNavigator();
+const Stack = createNativeStackNavigator<RootStackParamList>();
 
 export default function App() {
   return (
@@ -28,6 +30,11 @@ export default function App() {
               gestureEnabled: true, // enable swipe down to dismiss
               gestureDirection: 'vertical', // swipe direction
             }}
+          />
+          <Stack.Screen
+            name="Transaction"
+            component={TransactionScreen}
+            options={{ headerShown: false }} // Optional: hide header
           />
         </Stack.Navigator>
       </NavigationContainer>

@@ -5,12 +5,8 @@ import { StackNavigationProp } from '@react-navigation/stack';
 import { Ionicons } from '@expo/vector-icons';
 import { styles } from './styles';
 import { Header } from '@/components/cash/Header/Header';
-import { Transaction } from '@/types';
+import { RootStackParamList, Transaction } from '@/types';
 import { TransactionSection } from '@/components/cash/TransactionSection/TransactionSection';
-
-export type RootStackParamList = {
-  Deposit: undefined;
-};
 
 const transactions: Transaction[] = [
   {

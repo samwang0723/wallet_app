@@ -2,17 +2,34 @@ import React from 'react';
 import { Text, View, TouchableOpacity } from 'react-native';
 import { styles } from './styles';
 import { Transaction } from '@/types';
+import { useNavigation } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
 
 interface TransactionSectionProps {
   transactions: Transaction[];
 }
 
+export type RootStackParamList = {
+  Transaction: {
+    transactions: Transaction[];
+  };
+};
+
 export const TransactionSection: React.FC<TransactionSectionProps> = ({ transactions }) => {
+  const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
+
+  const handlePress = (transactions: Transaction[]) => {
+    console.log('See all transactions:', transactions);
+    navigation.navigate('Transaction', { transactions });
+  };
+
   return (
     <View style={styles.transactionsContainer}>
       <View style={styles.transactionsHeader}>
         <Text style={styles.transactionsTitle}>Recent Transactions</Text>
-        <TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => handlePress(transactions)}
+        >
           <Text style={styles.seeAll}>See All</Text>
         </TouchableOpacity>
       </View>

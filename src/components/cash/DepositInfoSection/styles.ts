@@ -4,7 +4,6 @@ import { COLORS, SPACING } from '@/styles/theme';
 export const styles = StyleSheet.create({
   container: {
     paddingHorizontal: SPACING.md,
-    paddingTop: SPACING.sm,
     paddingBottom: SPACING.sm,
     borderBottomWidth: 0,
     borderBottomColor: COLORS.border,

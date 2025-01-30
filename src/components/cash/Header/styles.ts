@@ -8,6 +8,7 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: COLORS.background,
     borderBottomWidth: 0,
+    marginBottom: 8,
   },
   // Left container: arrow or empty space
   leftContainer: {

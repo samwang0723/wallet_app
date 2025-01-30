@@ -17,12 +17,12 @@ export const styles = StyleSheet.create({
   },
   transactionsTitle: {
     color: 'white',
-    fontSize: 18,
+    fontSize: 14,
     fontWeight: '600',
   },
   seeAll: {
     color: COLORS.primary,
-    fontSize: 14,
+    fontSize: 12,
   },
   transactionItem: {
     flexDirection: 'row',
@@ -34,7 +34,7 @@ export const styles = StyleSheet.create({
   },
   transactionTitle: {
     color: 'white',
-    fontSize: 16,
+    fontSize: 12,
     marginBottom: 4,
   },
   transactionSubtitle: {
@@ -43,7 +43,7 @@ export const styles = StyleSheet.create({
   },
   transactionDate: {
     color: '#8E8E93',
-    fontSize: 14,
+    fontSize: 12,
   },
   dot: {
     color: '#8E8E93',
@@ -51,10 +51,10 @@ export const styles = StyleSheet.create({
   },
   transactionStatus: {
     color: '#58c5b5',
-    fontSize: 14,
+    fontSize: 12,
   },
   transactionAmount: {
     color: 'white',
-    fontSize: 16,
+    fontSize: 14,
   },
 });
