@@ -160,4 +160,19 @@ export const styles = StyleSheet.create({
     color: 'white',
     fontSize: 14,
   },
+  /* Option rows */
+  optionRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingVertical: 20,
+    paddingHorizontal: 16,
+    borderBottomWidth: StyleSheet.hairlineWidth,
+    borderBottomColor: COLORS.border, // or any dark gray you prefer
+  },
+  optionText: {
+    color: COLORS.text,
+    fontSize: 13,
+    paddingLeft: 6,
+  },
 });

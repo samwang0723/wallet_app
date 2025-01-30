@@ -9,9 +9,15 @@ interface HeaderProps {
   title: string;
   showBackButton?: boolean; // optional prop to toggle the back button
   showFaqButton?: boolean; // optional prop to toggle the faq button
+  showInfoButton?: boolean; // optional prop to toggle the info button
 }
 
-export const Header: React.FC<HeaderProps> = ({ title, showBackButton, showFaqButton }) => {
+export const Header: React.FC<HeaderProps> = ({
+  title,
+  showBackButton,
+  showFaqButton,
+  showInfoButton,
+}) => {
   const navigation = useNavigation();
 
   const handleBackPress = () => {
@@ -22,7 +28,10 @@ export const Header: React.FC<HeaderProps> = ({ title, showBackButton, showFaqBu
     <View style={styles.header}>
       {/* Left Container: Show arrow if showBackButton = true */}
       {showBackButton ? (
-        <TouchableOpacity style={styles.leftContainer} onPress={handleBackPress}>
+        <TouchableOpacity
+          style={styles.leftContainer}
+          onPress={handleBackPress}
+        >
           <Ionicons name="arrow-back" size={24} color="#FFFFFF" />
         </TouchableOpacity>
       ) : (
@@ -35,14 +44,23 @@ export const Header: React.FC<HeaderProps> = ({ title, showBackButton, showFaqBu
         <Text style={styles.title}>{title}</Text>
       </View>
 
-      {/* Right Container (empty or for future icons) */}
-      {showFaqButton ? (
-        <TouchableOpacity style={styles.rightContainer}>
-          <Ionicons name="help-circle-outline" size={24} color="#FFFFFF" />
-        </TouchableOpacity>
-      ) : (
-        <View style={styles.rightContainer} />
-      )}
+      {/* Right Container */}
+      <View style={styles.rightContainer}>
+        {showFaqButton && (
+          <TouchableOpacity>
+            <Ionicons name="help-circle-outline" size={24} color="#FFFFFF" />
+          </TouchableOpacity>
+        )}
+        {showInfoButton && (
+          <TouchableOpacity>
+            <Ionicons
+              name="information-circle-outline"
+              size={24}
+              color="#FFFFFF"
+            />
+          </TouchableOpacity>
+        )}
+      </View>
     </View>
   );
 };

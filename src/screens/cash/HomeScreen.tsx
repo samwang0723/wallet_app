@@ -1,11 +1,18 @@
 import React, { useState } from 'react';
-import { Text, SafeAreaView, View, TouchableOpacity, Image, ScrollView } from 'react-native';
+import {
+  Text,
+  SafeAreaView,
+  View,
+  TouchableOpacity,
+  Image,
+  ScrollView,
+} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { Ionicons } from '@expo/vector-icons';
 import { styles } from './styles';
 import { Header } from '@/components/cash/Header/Header';
-import { RootStackParamList, Transaction } from '@/types';
+import { BankAccount, RootStackParamList, Transaction } from '@/types';
 import { TransactionSection } from '@/components/cash/TransactionSection/TransactionSection';
 
 const transactions: Transaction[] = [
@@ -23,6 +30,20 @@ const transactions: Transaction[] = [
     status: 'Processed',
     amount: '+$100.85',
     isPositive: true,
+  },
+];
+
+// generate fake bank account data
+const bankAccounts: BankAccount[] = [
+  {
+    bankName: 'Bank of America',
+    accountNumber: '**** 1234',
+    accountName: 'sample.test1@gmail.com',
+  },
+  {
+    bankName: 'Chase Bank',
+    accountNumber: '**** 5678',
+    accountName: 'sample.test2@example.com',
   },
 ];
 
@@ -52,7 +73,7 @@ export const HomeScreen = () => {
               style={styles.eyeButton}
             >
               <Ionicons
-                name={isBalanceVisible ? "eye-outline" : "eye-off-outline"}
+                name={isBalanceVisible ? 'eye-outline' : 'eye-off-outline'}
                 size={20}
                 color="#8E8E93"
               />
@@ -75,7 +96,12 @@ export const HomeScreen = () => {
             <Text style={styles.actionText}>Deposit</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity style={styles.actionButton}>
+          <TouchableOpacity
+            style={styles.actionButton}
+            onPress={() =>
+              navigation.navigate('ChooseWithdraw', { bankAccounts })
+            } // Navigate to ChooseWithdraw screen
+          >
             <View style={styles.actionIcon}>
               <Text style={styles.plusMinus}>-</Text>
             </View>
@@ -86,7 +112,6 @@ export const HomeScreen = () => {
         {/* Transactions Section */}
         <TransactionSection transactions={transactions} />
       </ScrollView>
-
     </SafeAreaView>
   );
 };

@@ -1,11 +1,5 @@
 import React, { useState } from 'react';
-import {
-  View,
-  Text,
-  TouchableOpacity,
-  Modal,
-  Pressable,
-} from 'react-native';
+import { View, Text, TouchableOpacity, Modal, Pressable } from 'react-native';
 import { styles } from './styles';
 import { Ionicons } from '@expo/vector-icons';
 import { COLORS } from '@/styles/theme';
@@ -28,7 +22,9 @@ export const VendorSelector: React.FC<VendorSelectorProps> = ({
 }) => {
   const [modalVisible, setModalVisible] = useState(false);
   // Store the selected vendor in local state
-  const [selectedVendor, setSelectedVendor] = useState<string>(vendorOptions[0]);
+  const [selectedVendor, setSelectedVendor] = useState<string>(
+    vendorOptions[0]
+  );
 
   // Open/close the modal
   const openModal = () => setModalVisible(true);
