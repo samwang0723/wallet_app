@@ -7,6 +7,7 @@ import { BankInfoRow } from '@/components/cash/BankInfoRow/BankInfoRow';
 import { EmailButton } from '@/components/cash/EmailButton/EmailButton';
 import Toast, { BaseToast, ErrorToast, ToastConfig, BaseToastProps } from 'react-native-toast-message';
 import { styles } from './styles';
+import { VendorSelector } from '@/components/cash/VendorSelector/VendorSelector';
 
 const toastConfig: ToastConfig = {
   success: (props: BaseToastProps) => (
@@ -88,6 +89,14 @@ export const DepositScreen: React.FC = () => {
 
         {/* Warnings Section */}
         <WarningsSection warnings={warnings} />
+
+        <VendorSelector
+          vendorOptions={['Payper', 'DC Bank']}
+          selectedVendor="Payper"
+          onVendorSelect={(vendor: string) => {
+            console.log('Vendor selected:', vendor);
+          }}
+        />
 
         <Text style={styles.infoNote}>
           Enter the information below into your banking app to transfer funds
