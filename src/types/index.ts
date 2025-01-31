@@ -28,4 +28,5 @@ export type RootStackParamList = {
     bankAccounts: BankAccount[];
   };
   InitWithdrawal: undefined;
+  WithdrawInfo: undefined;
 };

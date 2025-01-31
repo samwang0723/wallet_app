@@ -160,4 +160,61 @@ export const styles = StyleSheet.create({
     fontSize: 13,
     paddingLeft: 6,
   },
+  /* Withdraw info screen */
+  // Big heading
+  mainHeading: {
+    marginTop: 2,
+    fontSize: 17,
+    color: COLORS.text,
+    fontWeight: '700',
+    textAlign: 'center',
+  },
+
+  // Steps container
+  stepsContainer: {
+    marginTop: 16,
+    // fill available space
+  },
+  stepRow: {
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    marginBottom: 24,
+  },
+  iconContainer: {
+    width: 20,
+    alignItems: 'center',
+    marginRight: 12,
+    marginTop: 2,
+    position: 'relative',
+  },
+  verticalLine: {
+    position: 'absolute',
+    top: 30, // just below the icon
+    left: '50%',
+    width: 1,
+    backgroundColor: COLORS.border,
+  },
+  textContainer: {
+    flex: 1,
+  },
+  stepTitle: {
+    fontSize: 14,
+    color: COLORS.text,
+    fontWeight: '600',
+    marginBottom: 4,
+  },
+  stepDescription: {
+    fontSize: 12,
+    lineHeight: 16,
+    color: COLORS.secondaryText,
+  },
+
+  // Footer
+  footerText: {
+    fontSize: 11,
+    color: COLORS.secondaryText,
+    marginTop: 6,
+    marginBottom: 12,
+    textAlign: 'center',
+  },
 });

@@ -3,11 +3,12 @@ import { TouchableOpacity, Text, View } from 'react-native';
 import { styles } from './styles';
 
 interface ButtonProps {
-  amount: number;
+  amount?: number;
+  text: string;
   onPress: () => void;
 }
 
-export const Button: React.FC<ButtonProps> = ({ amount, onPress }) => {
+export const Button: React.FC<ButtonProps> = ({ amount, text, onPress }) => {
   const handlePress = () => {
     onPress();
   };
@@ -27,7 +28,7 @@ export const Button: React.FC<ButtonProps> = ({ amount, onPress }) => {
             isButtonDisabled && styles.buttonTextDisabled,
           ]}
         >
-          {'Withdraw'}
+          {text}
         </Text>
       </TouchableOpacity>
     </View>

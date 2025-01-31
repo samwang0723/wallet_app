@@ -11,6 +11,7 @@ interface HeaderProps {
   showBackButton?: boolean; // optional prop to toggle the back button
   showFaqButton?: boolean; // optional prop to toggle the faq button
   showInfoButton?: boolean; // optional prop to toggle the info button
+  onPress?: () => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({
@@ -18,6 +19,7 @@ export const Header: React.FC<HeaderProps> = ({
   showBackButton,
   showFaqButton,
   showInfoButton,
+  onPress,
 }) => {
   const navigation = useNavigation();
 
@@ -48,12 +50,12 @@ export const Header: React.FC<HeaderProps> = ({
       {/* Right Container */}
       <View style={styles.rightContainer}>
         {showFaqButton && (
-          <TouchableOpacity>
+          <TouchableOpacity onPress={onPress}>
             <Ionicons name="help-circle-outline" size={24} color={COLORS.text} />
           </TouchableOpacity>
         )}
         {showInfoButton && (
-          <TouchableOpacity>
+          <TouchableOpacity onPress={onPress}>
             <Ionicons
               name="information-circle-outline"
               size={24}
