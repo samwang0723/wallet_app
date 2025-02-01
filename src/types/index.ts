@@ -18,6 +18,15 @@ export interface BankAccount {
   accountName: string;
 }
 
+export interface WithdrawalInfo {
+  currency: string;
+  amount: number;
+  method: string;
+  bankAccount: BankAccount;
+  fee: number;
+  receiveAmount: number;
+}
+
 export type RootStackParamList = {
   Home: undefined; // Example, adjust based on your app
   Deposit: undefined; // Example, adjust based on your app
@@ -29,4 +38,7 @@ export type RootStackParamList = {
   };
   InitWithdrawal: undefined;
   WithdrawInfo: undefined;
+  ConfirmWithdrawal: {
+    withdrawalInfo: WithdrawalInfo;
+  };
 };

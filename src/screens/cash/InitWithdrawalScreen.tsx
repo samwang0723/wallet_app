@@ -8,21 +8,35 @@ import { DailyLimit } from '@/components/cash/DailyLimit/DailyLimit';
 import { Button } from '@/components/cash/Button/Button';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
-import { RootStackParamList } from '@/types';
+import { RootStackParamList, WithdrawalInfo } from '@/types';
 
 
 export const InitWithdrawalScreen = () => {
   const [amount, setAmount] = useState<number>(0);
+  const [currency, setCurrency] = useState<string>('CAD');
+  const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
 
   const handleAmountChange = (newAmount: number) => {
+    setCurrency('CAD');
     setAmount(newAmount);
   };
 
   const handleClick = () => {
-    console.log('Withdraw button pressed');
+    const withdrawalInfo: WithdrawalInfo = {
+      currency: currency,
+      amount: amount,
+      method: 'Interac e-Transfer',
+      bankAccount: {
+        bankName: 'TD Canada Trust',
+        accountNumber: '123456789',
+        accountName: 'sample@crypto.com',
+      },
+      fee: 1.99,
+      receiveAmount: amount - 1.99,
+    };
+    navigation.navigate('ConfirmWithdrawal', { withdrawalInfo });
   };
 
-  const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <SafeAreaView style={styles.container}>

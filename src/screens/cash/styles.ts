@@ -160,6 +160,24 @@ export const styles = StyleSheet.create({
     fontSize: 13,
     paddingLeft: 6,
   },
+  optionBoldText: {
+    color: COLORS.text,
+    fontSize: 13,
+    paddingLeft: 6,
+    fontWeight: 'bold'
+  },
+  optionBoldTextColor: {
+    color: COLORS.primary,
+    fontSize: 13,
+    paddingLeft: 6,
+    fontWeight: 'bold'
+  },
+  noteText: {
+    color: COLORS.secondaryText, // Lighter gray
+    fontSize: 11,
+    marginTop: 20,
+    paddingHorizontal: 22,
+  },
   /* Withdraw info screen */
   // Big heading
   mainHeading: {
