@@ -1,10 +1,5 @@
 import React from 'react';
-import {
-  Modal,
-  Pressable,
-  Text,
-  View,
-} from 'react-native';
+import { Modal, Pressable, Text, View } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { styles } from './styles';
 
@@ -30,25 +25,22 @@ export const SuccessModal: React.FC<SuccessModalProps> = ({
   heading = 'Your bank transfer account is now ready to use',
 }) => {
   return (
-    <Modal
-      visible={visible}
-      transparent
-      animationType="fade"
-      onRequestClose={onDismiss}
-    >
+    <Modal visible={visible} transparent animationType="fade" onRequestClose={onDismiss}>
       {/* Pressable to capture "tap anywhere" and dismiss */}
       <Pressable style={styles.overlay} onPress={onDismiss}>
-        <View style={styles.centerContainer}>
-          {/* Checkmark in a circle */}
-          <View style={styles.checkmarkCircle}>
-            <Ionicons name="checkmark" size={40} color="white" />
+        <View style={styles.container}>
+          <View style={styles.centerContainer}>
+            {/* Checkmark in a circle */}
+            <View style={styles.checkmarkCircle}>
+              <Ionicons name="checkmark" size={40} color="white" />
+            </View>
+
+            {/* Subheading */}
+            <Text style={styles.subheadingText}>{subheading}</Text>
+
+            {/* Main heading */}
+            <Text style={styles.headingText}>{heading}</Text>
           </View>
-
-          {/* Subheading */}
-          <Text style={styles.subheadingText}>{subheading}</Text>
-
-          {/* Main heading */}
-          <Text style={styles.headingText}>{heading}</Text>
 
           {/* Bottom note */}
           <Text style={styles.tapToContinue}>Tap anywhere to continue</Text>
@@ -56,4 +48,4 @@ export const SuccessModal: React.FC<SuccessModalProps> = ({
       </Pressable>
     </Modal>
   );
-}; 
+};

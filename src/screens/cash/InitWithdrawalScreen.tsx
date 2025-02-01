@@ -6,18 +6,32 @@ import { Header } from '@/components/cash/Header/Header';
 import { AmountInput } from '@/components/cash/AmountInput/AmountInput';
 import { DailyLimit } from '@/components/cash/DailyLimit/DailyLimit';
 import { Button } from '@/components/cash/Button/Button';
-import { useNavigation } from '@react-navigation/native';
+import { RouteProp, useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { RootStackParamList, WithdrawalInfo } from '@/types';
+import { formatAmount } from '@/utils';
 
+type InitWithdrawalScreenNavigationProp = StackNavigationProp<
+  RootStackParamList,
+  'InitWithdrawal'
+>;
 
-export const InitWithdrawalScreen = () => {
+type InitWithdrawalScreenRouteProp = RouteProp<
+  RootStackParamList,
+  'InitWithdrawal'
+>;
+
+type InitWithdrawalScreenProps = {
+  navigation: InitWithdrawalScreenNavigationProp;
+  route: InitWithdrawalScreenRouteProp;
+};
+
+export const InitWithdrawalScreen: React.FC<InitWithdrawalScreenProps> = ({ route }) => {
+  const { currency } = route.params;
   const [amount, setAmount] = useState<number>(0);
-  const [currency, setCurrency] = useState<string>('CAD');
   const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
 
   const handleAmountChange = (newAmount: number) => {
-    setCurrency('CAD');
     setAmount(newAmount);
   };
 
@@ -32,7 +46,7 @@ export const InitWithdrawalScreen = () => {
         accountName: 'sample@crypto.com',
       },
       fee: 1.99,
-      receiveAmount: amount - 1.99,
+      receiveAmount: parseFloat(formatAmount(amount - 1.99, currency)),
     };
     navigation.navigate('ConfirmWithdrawal', { withdrawalInfo });
   };
@@ -45,7 +59,7 @@ export const InitWithdrawalScreen = () => {
         } />
         <View style={{ flex: 1 }}>
           {/* Amount input */}
-          <AmountInput onAmountChange={handleAmountChange} />
+          <AmountInput onAmountChange={handleAmountChange} currency={currency} />
 
           {/* Daily limit */}
           <DailyLimit used={5000} total={25000} />

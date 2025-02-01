@@ -39,7 +39,7 @@ export const ChooseBankAccountScreen: React.FC<ChooseBankAccountScreenProps> = (
             <TouchableOpacity
               key={bankAccount.accountName}
               style={styles.optionRow}
-              onPress={() => { navigation.navigate('InitWithdrawal'); }}
+              onPress={() => { navigation.navigate('InitWithdrawal', { currency: 'CAD' }); }}
             >
               <Text style={styles.optionText}>{bankAccount.accountName}</Text>
               <Ionicons

@@ -1,21 +1,23 @@
-import { Dimensions, StyleSheet } from 'react-native';
-import { COLORS } from '@/styles/theme';
+// styles.ts
+import { StyleSheet } from 'react-native';
+import { COLORS, SPACING } from '@/styles/theme';
 
-const { height } = Dimensions.get('window');
 export const styles = StyleSheet.create({
   overlay: {
     flex: 1,
-    backgroundColor: COLORS.transactionStatus, // greenish background from screenshot
-    justifyContent: 'center',
+    backgroundColor: COLORS.transactionStatus,
+  },
+  container: {
+    flex: 1,
+    justifyContent: 'space-between',
     alignItems: 'center',
+    paddingVertical: SPACING.xl, // Adjust as needed
+    paddingHorizontal: SPACING.md,
   },
   centerContainer: {
+    flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    width: '90%',
-    bottom: 0,
-    position: 'absolute',
-    // If you like, you can add some padding or top margin
   },
   checkmarkCircle: {
     width: 80,
@@ -38,13 +40,11 @@ export const styles = StyleSheet.create({
     fontSize: 20,
     textAlign: 'center',
     fontWeight: 'bold',
-    marginBottom: height / 2 - 140,
   },
   tapToContinue: {
-    marginBottom: 50,
     color: COLORS.text,
     fontSize: 12,
     textAlign: 'center',
-    width: '100%',
+    marginBottom: 20, // Adjust as needed
   },
 });

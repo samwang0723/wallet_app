@@ -36,7 +36,9 @@ export type RootStackParamList = {
   ChooseBankAccount: {
     bankAccounts: BankAccount[];
   };
-  InitWithdrawal: undefined;
+  InitWithdrawal: {
+    currency: string;
+  };
   WithdrawInfo: undefined;
   ConfirmWithdrawal: {
     withdrawalInfo: WithdrawalInfo;
