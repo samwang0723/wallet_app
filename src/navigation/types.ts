@@ -1,26 +1,4 @@
-export interface Transaction {
-  id: string;
-  title: string;
-  date: string;
-  status: string;
-  amount: string;
-  isPositive?: boolean;
-}
-
-export interface BankAccount {
-  bankName: string;
-  accountNumber: string;
-  accountName: string;
-}
-
-export interface WithdrawalInfo {
-  currency: string;
-  amount: number;
-  method: string;
-  bankAccount: BankAccount;
-  fee: number;
-  receiveAmount: number;
-}
+import { BankAccount, PaymentNetwork, Transaction, WithdrawalInfo } from "@/store/types";
 
 export type RootStackParamList = {
   Home: undefined;
@@ -37,5 +15,8 @@ export type RootStackParamList = {
   WithdrawInfo: undefined;
   ConfirmWithdrawal: {
     withdrawalInfo: WithdrawalInfo;
+  };
+  PaymentNetwork: {
+    paymentNetworks: PaymentNetwork[];
   };
 };

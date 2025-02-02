@@ -9,6 +9,7 @@ import { ConfirmWithdrawalScreen } from '@/screens/cash/ConfirmWithdrawalScreen'
 import { DepositScreen } from '@/screens/cash/DepositScreen';
 import { HomeScreen } from '@/screens/cash/HomeScreen';
 import { TransactionScreen } from '@/screens/cash/TransactionScreen';
+import { PaymentNetworkScreen } from '@/screens/cash/PaymentNetworkScreen';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -56,6 +57,11 @@ const AppNavigator = () => (
       <Stack.Screen
         name="ConfirmWithdrawal"
         component={ConfirmWithdrawalScreen}
+        options={{ headerShown: false }} // Optional: hide header
+      />
+      <Stack.Screen
+        name="PaymentNetwork"
+        component={PaymentNetworkScreen}
         options={{ headerShown: false }} // Optional: hide header
       />
     </Stack.Navigator>

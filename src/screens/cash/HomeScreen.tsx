@@ -12,8 +12,9 @@ import { StackNavigationProp } from '@react-navigation/stack';
 import { Ionicons } from '@expo/vector-icons';
 import { styles } from './styles';
 import { Header } from '@/components/cash/Header/Header';
-import { BankAccount, RootStackParamList, Transaction } from '@/navigation/types';
+import { RootStackParamList } from '@/navigation/types';
 import { TransactionSection } from '@/components/cash/TransactionSection/TransactionSection';
+import { BankAccount, PaymentNetwork, Transaction } from '@/store/types';
 
 const transactions: Transaction[] = [
   {
@@ -44,6 +45,42 @@ const bankAccounts: BankAccount[] = [
     bankName: 'Chase Bank',
     accountNumber: '**** 5678',
     accountName: 'sample.test2@example.com',
+  },
+];
+
+const depositMethods: PaymentNetwork[] = [
+  {
+    id: 'instant',
+    title: 'Instant Deposit',
+    type: '',
+    description:
+      'Link your bank account securely and Crypto.com provides you with an instant deposit before the funds are processed, so you can buy crypto and trade derivatives immediately. No Fees.',
+    recommended: true,
+    iconName: 'home-outline', // Ionicons building icon
+  },
+  {
+    id: 'ach',
+    title: 'ACH Bank Transfer',
+    type: '',
+    description:
+      'Transfer USD via the ACH network from your bank account manually using your Crypto.com bank details. No fees, funds received in 3-5 business days.',
+    iconName: 'home-outline',
+  },
+  {
+    id: 'wire',
+    title: 'Wire Transfer',
+    type: '',
+    description:
+      'Transfer USD via the wire network from your bank account manually using your Crypto.com bank details. No fees, funds received in 1-3 business days.',
+    iconName: 'home-outline',
+  },
+  {
+    id: 'credit',
+    title: 'Credit Card',
+    type: '',
+    description:
+      'Top up your fiat wallet with your personal debit/credit card. Fees start from 1.49%. Additional fees might be charged by the issuing financial institution',
+    iconName: 'card-outline',
   },
 ];
 
@@ -88,7 +125,11 @@ export const HomeScreen = () => {
         <View style={styles.actionButtons}>
           <TouchableOpacity
             style={styles.actionButton}
-            onPress={() => navigation.navigate('Deposit')} // Navigate to Deposit screen
+            onPress={() =>
+              navigation.navigate('PaymentNetwork', {
+                paymentNetworks: depositMethods,
+              })
+            } // Navigate to Deposit screen
           >
             <View style={styles.actionIcon}>
               <Text style={styles.plusMinus}>+</Text>

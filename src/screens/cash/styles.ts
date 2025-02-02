@@ -235,4 +235,41 @@ export const styles = StyleSheet.create({
     marginBottom: 12,
     textAlign: 'center',
   },
+
+  // Payment methods
+  separator: {
+    height: 1,
+    backgroundColor: COLORS.border, // subtle divider
+    marginBottom: 16,
+  },
+  methodContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  methodTitle: {
+    color: COLORS.text,
+    fontSize: 14,
+    fontWeight: '600',
+    marginLeft: 8,
+  },
+  methodDescription: {
+    color: COLORS.secondaryText,
+    fontSize: 12,
+    lineHeight: 14,
+    marginVertical: 16,
+  },
+  recommendedText: {
+    color: COLORS.text,
+    fontSize: 12,
+    fontWeight: '500',
+  },
+  recommendedBadge: {
+    backgroundColor: COLORS.primary,
+    borderRadius: 6,
+    paddingHorizontal: 8,
+    paddingVertical: 4,
+    marginBottom: 16,
+    width: 'auto',
+    alignSelf: 'flex-start',
+  },
 });
