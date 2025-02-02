@@ -5,7 +5,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { Header } from '@/components/cash/Header/Header';
 import { RouteProp } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
-import { RootStackParamList } from '@/types';
+import { RootStackParamList } from '@/navigation/types';
 import { Button } from '@/components/cash/Button/Button';
 import { SuccessModal } from '@/components/cash/SuccessModal/SuccessModal';
 

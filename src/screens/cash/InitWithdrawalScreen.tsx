@@ -8,7 +8,7 @@ import { DailyLimit } from '@/components/cash/DailyLimit/DailyLimit';
 import { Button } from '@/components/cash/Button/Button';
 import { RouteProp, useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
-import { RootStackParamList, WithdrawalInfo } from '@/types';
+import { RootStackParamList, WithdrawalInfo } from '@/navigation/types';
 import { formatAmount } from '@/utils';
 
 type InitWithdrawalScreenNavigationProp = StackNavigationProp<

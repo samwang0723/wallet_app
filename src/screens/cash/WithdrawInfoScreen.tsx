@@ -14,7 +14,7 @@ import { Header } from '@/components/cash/Header/Header';
 import { COLORS, SPACING } from '@/styles/theme';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
-import { RootStackParamList } from '@/types';
+import { RootStackParamList } from '@/navigation/types';
 import { parseLinkInText } from '@/utils';
 
 // We’ll define the steps up front:

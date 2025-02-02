@@ -1,8 +1,3 @@
-export interface BankInfo {
-  label: string;
-  value: string;
-}
-
 export interface Transaction {
   id: string;
   title: string;
@@ -28,8 +23,8 @@ export interface WithdrawalInfo {
 }
 
 export type RootStackParamList = {
-  Home: undefined; // Example, adjust based on your app
-  Deposit: undefined; // Example, adjust based on your app
+  Home: undefined;
+  Deposit: undefined;
   Transaction: {
     transactions: Transaction[];
   };

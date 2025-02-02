@@ -12,7 +12,7 @@ import { StackNavigationProp } from '@react-navigation/stack';
 import { Ionicons } from '@expo/vector-icons';
 import { styles } from './styles';
 import { Header } from '@/components/cash/Header/Header';
-import { BankAccount, RootStackParamList, Transaction } from '@/types';
+import { BankAccount, RootStackParamList, Transaction } from '@/navigation/types';
 import { TransactionSection } from '@/components/cash/TransactionSection/TransactionSection';
 
 const transactions: Transaction[] = [

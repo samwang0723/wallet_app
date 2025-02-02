@@ -1,7 +1,7 @@
 import React from 'react';
 import { Text, View, ScrollView } from 'react-native';
 import { styles } from './styles';
-import { RootStackParamList } from '@/types';
+import { RootStackParamList } from '@/navigation/types';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Header } from '@/components/cash/Header/Header';
 import { StackNavigationProp } from '@react-navigation/stack';
