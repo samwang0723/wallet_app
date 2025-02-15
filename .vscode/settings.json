@@ -1,0 +1,15 @@
+{
+  "editor.fontFamily": "SauceCodePro Nerd Font Mono",
+  "editor.inlayHints.fontFamily": "SauceCodePro Nerd Font Mono",
+  "editor.inlineSuggest.fontFamily": "SauceCodePro Nerd Font Mono",
+  "debug.console.fontFamily": "SauceCodePro Nerd Font Mono",
+  "scm.inputFontFamily": "SauceCodePro Nerd Font Mono",
+  "terminal.integrated.fontLigatures": false,
+  "terminal.integrated.fontFamily": "SauceCodePro Nerd Font Mono",
+  "notebook.output.fontFamily": "SauceCodePro Nerd Font Mono",
+  "gitlens.currentLine.fontFamily": "SauceCodePro Nerd Font Mono",
+  "terminal.integrated.cursorBlinking": true,
+  "terminal.integrated.cursorStyleInactive": "block",
+  "terminal.integrated.cursorStyle": "line",
+  "terminal.integrated.defaultProfile.osx": "zsh"
+}

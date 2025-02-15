@@ -1,5 +1,5 @@
+/* eslint-disable  @typescript-eslint/no-explicit-any */
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
-import Config from 'react-native-config';
 import { getAuthToken } from './authService';
 
 export interface ApiResponse<T> {
@@ -13,7 +13,7 @@ class ApiClient {
 
   constructor() {
     this.axiosInstance = axios.create({
-      baseURL: Config.API_BASE_URL,
+      baseURL: process.env.EXPO_PUBLIC_API_BASE_URL,
       timeout: 10000,
       headers: {
         'Content-Type': 'application/json',
@@ -23,7 +23,7 @@ class ApiClient {
 
     // Add interceptors
     this.axiosInstance.interceptors.request.use(
-      async config => {
+      async (config) => {
         // Modify the request config before sending the request
         // For example, add an authorization token if available
         const token = await getAuthToken(); // Implement this function according to your auth logic
@@ -32,17 +32,17 @@ class ApiClient {
         }
         return config;
       },
-      error => {
+      (error) => {
         // Handle request error
         return Promise.reject(error);
-      },
+      }
     );
     this.axiosInstance.interceptors.response.use(
-      response => {
+      (response) => {
         // Any status code that lies within the range of 2xx causes this function to trigger
         return response;
       },
-      error => {
+      (error) => {
         // Any status codes that falls outside the range of 2xx cause this function to trigger
         // Handle response errors
         if (error.response) {
@@ -57,16 +57,22 @@ class ApiClient {
           console.log('Error', error.message);
         }
         return Promise.reject(error);
-      },
+      }
     );
   }
 
-  public get<T>(url: string, config?: AxiosRequestConfig): Promise<AxiosResponse<T>> {
+  public get<T>(
+    url: string,
+    config?: AxiosRequestConfig
+  ): Promise<AxiosResponse<T>> {
     return this.axiosInstance.get<T>(url, config);
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  public post<T>(url: string, data?: any, config?: AxiosRequestConfig): Promise<AxiosResponse<T>> {
+  public post<T>(
+    url: string,
+    data?: any,
+    config?: AxiosRequestConfig
+  ): Promise<AxiosResponse<T>> {
     return this.axiosInstance.post<T>(url, data, config);
   }
 

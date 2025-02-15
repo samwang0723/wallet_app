@@ -27,7 +27,9 @@ type InitWithdrawalScreenProps = {
   route: InitWithdrawalScreenRouteProp;
 };
 
-export const InitWithdrawalScreen: React.FC<InitWithdrawalScreenProps> = ({ route }) => {
+export const InitWithdrawalScreen: React.FC<InitWithdrawalScreenProps> = ({
+  route,
+}) => {
   const { currency } = route.params;
   const [amount, setAmount] = useState<number>(0);
   const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
@@ -55,12 +57,18 @@ export const InitWithdrawalScreen: React.FC<InitWithdrawalScreenProps> = ({ rout
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <SafeAreaView style={styles.container}>
-        <Header title="Withdraw CAD" showBackButton showInfoButton onPress={
-          () => navigation.navigate('WithdrawInfo')
-        } />
+        <Header
+          title="Withdraw CAD"
+          showBackButton
+          showInfoButton
+          onPress={() => navigation.navigate('WithdrawInfo')}
+        />
         <View style={{ flex: 1 }}>
           {/* Amount input */}
-          <AmountInput onAmountChange={handleAmountChange} currency={currency} />
+          <AmountInput
+            onAmountChange={handleAmountChange}
+            currency={currency}
+          />
 
           {/* Daily limit */}
           <DailyLimit used={5000} total={25000} />

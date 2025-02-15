@@ -15,7 +15,7 @@ export const styles = StyleSheet.create({
     marginHorizontal: SPACING.md,
     marginVertical: SPACING.xs,
     borderRadius: 8,
-    overflow: 'hidden',           // So corners stay rounded
+    overflow: 'hidden', // So corners stay rounded
     backgroundColor: COLORS.cardBackground || COLORS.background,
   },
   infoNote: {
@@ -62,8 +62,8 @@ export const styles = StyleSheet.create({
     marginBottom: 8,
   },
   eyeButton: {
-    padding: 4,  // This creates a larger touchable area
-    marginLeft: 2,  // Space between text and icon
+    padding: 4, // This creates a larger touchable area
+    marginLeft: 2, // Space between text and icon
   },
   balanceLabel: {
     color: COLORS.secondaryText,
@@ -164,13 +164,13 @@ export const styles = StyleSheet.create({
     color: COLORS.text,
     fontSize: 13,
     paddingLeft: 6,
-    fontWeight: 'bold'
+    fontWeight: 'bold',
   },
   optionBoldTextColor: {
     color: COLORS.primary,
     fontSize: 13,
     paddingLeft: 6,
-    fontWeight: 'bold'
+    fontWeight: 'bold',
   },
   noteText: {
     color: COLORS.secondaryText, // Lighter gray

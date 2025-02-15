@@ -15,7 +15,9 @@ export type RootStackParamList = {
   };
 };
 
-export const TransactionSection: React.FC<TransactionSectionProps> = ({ transactions }) => {
+export const TransactionSection: React.FC<TransactionSectionProps> = ({
+  transactions,
+}) => {
   const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
 
   const handlePress = (transactions: Transaction[]) => {
@@ -27,9 +29,7 @@ export const TransactionSection: React.FC<TransactionSectionProps> = ({ transact
     <View style={styles.transactionsContainer}>
       <View style={styles.transactionsHeader}>
         <Text style={styles.transactionsTitle}>Recent Transactions</Text>
-        <TouchableOpacity
-          onPress={() => handlePress(transactions)}
-        >
+        <TouchableOpacity onPress={() => handlePress(transactions)}>
           <Text style={styles.seeAll}>See All</Text>
         </TouchableOpacity>
       </View>
@@ -45,9 +45,7 @@ export const TransactionSection: React.FC<TransactionSectionProps> = ({ transact
               <Text style={styles.transactionStatus}>{transaction.status}</Text>
             </View>
           </View>
-          <Text style={styles.transactionAmount}>
-            {transaction.amount}
-          </Text>
+          <Text style={styles.transactionAmount}>{transaction.amount}</Text>
         </View>
       ))}
     </View>

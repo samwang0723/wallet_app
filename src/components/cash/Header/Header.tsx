@@ -1,11 +1,9 @@
-// components/Header/Header.tsx
 import React from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
-import { styles } from './styles';
-import { COLORS } from '@/styles/theme';
-
+import Text from '@/components/ui/Text';
+import { theme } from '@/themes';
 interface HeaderProps {
   title: string;
   showBackButton?: boolean; // optional prop to toggle the back button
@@ -28,38 +26,47 @@ export const Header: React.FC<HeaderProps> = ({
   };
 
   return (
-    <View style={styles.header}>
+    <View
+      className="h-14 flex-row items-center border-b-0 mb-2"
+      style={{ backgroundColor: theme.colors.background }}
+    >
       {/* Left Container: Show arrow if showBackButton = true */}
       {showBackButton ? (
         <TouchableOpacity
-          style={styles.leftContainer}
+          className="w-14 items-center justify-center"
           onPress={handleBackPress}
         >
-          <Ionicons name="arrow-back" size={24} color={COLORS.text} />
+          <Ionicons name="arrow-back" size={24} color={theme.colors.text} />
         </TouchableOpacity>
       ) : (
         // Even if there's no back button, keep left container for layout
-        <View style={styles.leftContainer} />
+        <View className="w-14 items-center justify-center" />
       )}
 
       {/* Center: Title */}
-      <View style={styles.centerContainer}>
-        <Text style={styles.title}>{title}</Text>
+      <View className="flex-1 items-center justify-center">
+        <Text variant="md" weight="bold" color="text">
+          {title}
+        </Text>
       </View>
 
       {/* Right Container */}
-      <View style={styles.rightContainer}>
+      <View className="w-14 items-center justify-center">
         {showFaqButton && (
-          <TouchableOpacity onPress={onPress}>
-            <Ionicons name="help-circle-outline" size={24} color={COLORS.text} />
+          <TouchableOpacity className="p-1" onPress={onPress}>
+            <Ionicons
+              name="help-circle-outline"
+              size={24}
+              color={theme.colors.text}
+            />
           </TouchableOpacity>
         )}
         {showInfoButton && (
-          <TouchableOpacity onPress={onPress}>
+          <TouchableOpacity className="p-1" onPress={onPress}>
             <Ionicons
               name="information-circle-outline"
               size={24}
-              color={COLORS.text}
+              color={theme.colors.text}
             />
           </TouchableOpacity>
         )}

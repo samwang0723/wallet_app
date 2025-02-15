@@ -1,8 +1,5 @@
 import { COLORS, SPACING } from '@/styles/theme';
-import {
-  StyleSheet,
-  Platform,
-} from 'react-native';
+import { StyleSheet, Platform } from 'react-native';
 
 export const styles = StyleSheet.create({
   // ============== AMOUNT INPUT STYLES ==============

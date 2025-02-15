@@ -42,7 +42,9 @@ export const PaymentNetworkScreen: React.FC<PaymentNetworkScreenProps> = ({
         {paymentNetworks.map((item) => (
           <TouchableOpacity
             key={item.id}
-            onPress={() => { navigation.navigate('Deposit'); }}
+            onPress={() => {
+              navigation.navigate('Deposit');
+            }}
           >
             <View style={styles.textContainer}>
               {/* Icon on the left */}

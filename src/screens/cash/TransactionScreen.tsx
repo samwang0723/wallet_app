@@ -7,23 +7,21 @@ import { Header } from '@/components/cash/Header/Header';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { RouteProp } from '@react-navigation/native';
 
-
 type TransactionScreenNavigationProp = StackNavigationProp<
   RootStackParamList,
   'Transaction'
 >;
 
-type TransactionScreenRouteProp = RouteProp<
-  RootStackParamList,
-  'Transaction'
->;
+type TransactionScreenRouteProp = RouteProp<RootStackParamList, 'Transaction'>;
 
 type TransactionScreenProps = {
   navigation: TransactionScreenNavigationProp;
   route: TransactionScreenRouteProp;
 };
 
-export const TransactionScreen: React.FC<TransactionScreenProps> = ({ route }) => {
+export const TransactionScreen: React.FC<TransactionScreenProps> = ({
+  route,
+}) => {
   const { transactions } = route.params;
   return (
     <SafeAreaView style={styles.container}>
@@ -38,12 +36,12 @@ export const TransactionScreen: React.FC<TransactionScreenProps> = ({ route }) =
               <View style={styles.transactionSubtitle}>
                 <Text style={styles.transactionDate}>{transaction.date}</Text>
                 <Text style={styles.dot}>•</Text>
-                <Text style={styles.transactionStatus}>{transaction.status}</Text>
+                <Text style={styles.transactionStatus}>
+                  {transaction.status}
+                </Text>
               </View>
             </View>
-            <Text style={styles.transactionAmount}>
-              {transaction.amount}
-            </Text>
+            <Text style={styles.transactionAmount}>{transaction.amount}</Text>
           </View>
         ))}
       </ScrollView>

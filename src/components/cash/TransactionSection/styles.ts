@@ -6,7 +6,7 @@ export const styles = StyleSheet.create({
     marginHorizontal: SPACING.md,
     marginVertical: SPACING.xs,
     borderRadius: 8,
-    overflow: 'hidden',           // So corners stay rounded
+    overflow: 'hidden', // So corners stay rounded
     backgroundColor: COLORS.cardBackground || COLORS.background,
   },
   transactionsHeader: {

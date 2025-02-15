@@ -24,9 +24,9 @@ type ChooseBankAccountScreenProps = {
   route: ChooseBankAccountScreenRouteProp;
 };
 
-export const ChooseBankAccountScreen: React.FC<ChooseBankAccountScreenProps> = ({
-  route,
-}) => {
+export const ChooseBankAccountScreen: React.FC<
+  ChooseBankAccountScreenProps
+> = ({ route }) => {
   const { bankAccounts } = route.params;
   const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
   return (
@@ -39,7 +39,9 @@ export const ChooseBankAccountScreen: React.FC<ChooseBankAccountScreenProps> = (
             <TouchableOpacity
               key={bankAccount.accountName}
               style={styles.optionRow}
-              onPress={() => { navigation.navigate('InitWithdrawal', { currency: 'CAD' }); }}
+              onPress={() => {
+                navigation.navigate('InitWithdrawal', { currency: 'CAD' });
+              }}
             >
               <Text style={styles.optionText}>{bankAccount.accountName}</Text>
               <Ionicons

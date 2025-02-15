@@ -25,7 +25,12 @@ export const SuccessModal: React.FC<SuccessModalProps> = ({
   heading = 'Your bank transfer account is now ready to use',
 }) => {
   return (
-    <Modal visible={visible} transparent animationType="fade" onRequestClose={onDismiss}>
+    <Modal
+      visible={visible}
+      transparent
+      animationType="fade"
+      onRequestClose={onDismiss}
+    >
       {/* Pressable to capture "tap anywhere" and dismiss */}
       <Pressable style={styles.overlay} onPress={onDismiss}>
         <View style={styles.container}>

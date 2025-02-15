@@ -8,7 +8,11 @@ interface ButtonProps {
   onPress: () => void;
 }
 
-export const EmailButton: React.FC<ButtonProps> = ({ code, timeout, onPress }) => {
+export const EmailButton: React.FC<ButtonProps> = ({
+  code,
+  timeout,
+  onPress,
+}) => {
   const [countdown, setCountdown] = useState(timeout);
   const [isTimerActive, setIsTimerActive] = useState(false);
 
@@ -44,7 +48,8 @@ export const EmailButton: React.FC<ButtonProps> = ({ code, timeout, onPress }) =
         <View style={styles.topContainer}>
           <View style={styles.instructionContainer}>
             <Text style={styles.instructionText}>
-              Ensure the 4-digit verification code shown here and the one in the email subject line match up.
+              Ensure the 4-digit verification code shown here and the one in the
+              email subject line match up.
             </Text>
           </View>
 
@@ -54,21 +59,19 @@ export const EmailButton: React.FC<ButtonProps> = ({ code, timeout, onPress }) =
         </View>
       )}
       <TouchableOpacity
-        style={[
-          styles.button,
-          isButtonDisabled && styles.buttonDisabled,
-        ]}
+        style={[styles.button, isButtonDisabled && styles.buttonDisabled]}
         onPress={handlePress}
         disabled={isButtonDisabled}
       >
-        <Text style={[
-          styles.buttonText,
-          isButtonDisabled && styles.buttonTextDisabled,
-        ]}>
+        <Text
+          style={[
+            styles.buttonText,
+            isButtonDisabled && styles.buttonTextDisabled,
+          ]}
+        >
           {isTimerActive
             ? `Email Sent. Available again in ${countdown}s`
-            : 'Send Info To Email'
-          }
+            : 'Send Info To Email'}
         </Text>
       </TouchableOpacity>
     </View>

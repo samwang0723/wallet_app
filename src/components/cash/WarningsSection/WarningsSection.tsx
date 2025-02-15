@@ -9,7 +9,9 @@ interface WarningsSectionProps {
   warnings: string[];
 }
 
-export const WarningsSection: React.FC<WarningsSectionProps> = ({ warnings }) => {
+export const WarningsSection: React.FC<WarningsSectionProps> = ({
+  warnings,
+}) => {
   return (
     <View style={styles.container}>
       {warnings.map((warning, index) => (

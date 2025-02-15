@@ -1,4 +1,9 @@
-import { BankAccount, PaymentNetwork, Transaction, WithdrawalInfo } from "@/store/types";
+import {
+  BankAccount,
+  PaymentNetwork,
+  Transaction,
+  WithdrawalInfo,
+} from '@/store/types';
 
 export type RootStackParamList = {
   Home: undefined;

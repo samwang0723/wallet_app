@@ -7,7 +7,9 @@ interface AppContextProps {
 }
 
 // Create the context with a default value of `undefined`
-export const AppContext = React.createContext<AppContextProps | undefined>(undefined);
+export const AppContext = React.createContext<AppContextProps | undefined>(
+  undefined
+);
 
 // Usage
 // import React, { useContext } from 'react';
