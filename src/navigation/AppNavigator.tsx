@@ -52,7 +52,15 @@ const AppNavigator = () => (
       <Stack.Screen
         name="WithdrawInfo"
         component={WithdrawInfoScreen}
-        options={{ headerShown: false }} // Optional: hide header
+        options={{
+          presentation: 'modal', // This makes it slide from bottom
+          animation: 'slide_from_bottom', // Specifically for bottom animation
+          headerShown: false, // Optional: hide header
+          // Optional: customize animation
+          animationDuration: 200, // animation duration in ms
+          gestureEnabled: true, // enable swipe down to dismiss
+          gestureDirection: 'vertical', // swipe direction
+        }}
       />
       <Stack.Screen
         name="ConfirmWithdrawal"

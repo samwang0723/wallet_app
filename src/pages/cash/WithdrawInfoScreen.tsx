@@ -1,11 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import {
-  View,
-  ScrollView,
-  SafeAreaView,
-  LayoutChangeEvent,
-  Linking,
-} from 'react-native';
+import React from 'react';
+import { View, ScrollView, SafeAreaView, Linking } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { Button } from '@/components/cash/Button/Button';
 import { Header } from '@/components/cash/Header/Header';
@@ -62,7 +56,7 @@ export const WithdrawInfoScreen: React.FC = () => {
     'home-outline',
     'document-text-outline',
     'time-outline',
-    'checkmark-circle', // Add all other valid icon names here
+    'checkmark-circle',
   ] as const;
   const helpText =
     'To learn more, visit our (Help Center)https://help.crypto.com';
@@ -73,21 +67,6 @@ export const WithdrawInfoScreen: React.FC = () => {
     return validIconNames.includes(name as IconName);
   };
 
-  const [partHeights, setPartHeights] = useState<number[]>([]);
-
-  const handlePartLayout = (index: number) => (event: LayoutChangeEvent) => {
-    const { height } = event.nativeEvent.layout;
-    setPartHeights((prevHeights) => {
-      const newHeights = [...prevHeights];
-      newHeights[index] = height - 10;
-      return newHeights;
-    });
-  };
-
-  useEffect(() => {
-    // This effect will run after the component has been rendered
-    // and partHeights state has been updated
-  }, [partHeights]);
   return (
     <SafeAreaView
       className="flex-1"
@@ -106,9 +85,9 @@ export const WithdrawInfoScreen: React.FC = () => {
         {steps.map((step, index) => {
           const isLast = index === steps.length - 1;
           return (
-            <View key={step.id} className="flex-row mb-6">
+            <View key={step.id} className="flex-row mb-4">
               {/* Left icon & vertical line (for first 3 steps) */}
-              <View className="items-center mr-4">
+              <View className="items-center mr-2">
                 {isValidIconName(step.iconName) ? (
                   <Ionicons
                     name={step.iconName as IconName}
@@ -122,22 +101,22 @@ export const WithdrawInfoScreen: React.FC = () => {
                 {!isLast && (
                   <View
                     className="w-px bg-border"
-                    style={{ height: partHeights[index] || 0 }}
+                    style={{ height: 40 }} // Fixed height for the connector
                   />
                 )}
               </View>
 
               {/* Text content (title + description) */}
-              <View className="flex-1" onLayout={handlePartLayout(index)}>
+              <View className="flex-1">
                 <Text
-                  variant="md"
+                  variant="lg"
                   weight="semibold"
                   color="text"
                   className="mb-2"
                 >
                   {step.title}
                 </Text>
-                <Text variant="base" color="secondaryText">
+                <Text variant="md" color="secondaryText">
                   {step.description}
                 </Text>
               </View>
@@ -147,7 +126,7 @@ export const WithdrawInfoScreen: React.FC = () => {
 
         {/* Footer info text */}
         <View className="flex-1 mb-4">
-          <Text variant="sm" color="secondaryText">
+          <Text variant="md" color="secondaryText">
             {parseLinkInText(helpText).map((part, idx) => {
               if (part.type === 'text') {
                 return part.text;
@@ -155,7 +134,7 @@ export const WithdrawInfoScreen: React.FC = () => {
                 return (
                   <Text
                     key={idx}
-                    variant="sm"
+                    variant="md"
                     color="primary"
                     onPress={() => Linking.openURL(part.url)}
                   >
@@ -170,10 +149,7 @@ export const WithdrawInfoScreen: React.FC = () => {
       </ScrollView>
 
       {/* Fixed bottom button */}
-      <View
-        className="px-4 py-4 border-t"
-        style={{ borderColor: theme.colors.border }}
-      >
+      <View className="px-4 py-4" style={{ borderColor: theme.colors.border }}>
         <Button onPress={handleClick} text="Got It" />
       </View>
     </SafeAreaView>
