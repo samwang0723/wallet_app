@@ -14,23 +14,23 @@ import { StackNavigationProp } from '@react-navigation/stack';
 import { RootStackParamList } from '@/navigation/types';
 import { Header } from '@/components/cash/Header/Header';
 
-type OccupationListScreenNavigationProp = StackNavigationProp<
+export type OccupationListScreenNavigationProp = StackNavigationProp<
   RootStackParamList,
   'OccupationList'
 >;
 
-type OccupationListScreenRouteProp = RouteProp<
+export type OccupationListScreenRouteProp = RouteProp<
   RootStackParamList,
   'OccupationList'
 >;
 
-type OccupationListScreenProps = {
+export type OccupationListScreenProps = {
   navigation: OccupationListScreenNavigationProp;
   route: OccupationListScreenRouteProp;
 };
 
 // Create a callback ref to store the occupation selection callback
-let occupationCallback: ((occupation: string) => void) | null = null;
+export let occupationCallback: ((occupation: string) => void) | null = null;
 
 export const setOccupationCallback = (
   callback: (occupation: string) => void
