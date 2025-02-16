@@ -2,14 +2,14 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { RootStackParamList } from './types';
-import { ChooseBankAccountScreen } from '@/screens/cash/ChooseBankAccountScreen';
-import { InitWithdrawalScreen } from '@/screens/cash/InitWithdrawalScreen';
-import { WithdrawInfoScreen } from '@/screens/cash/WithdrawInfoScreen';
-import { ConfirmWithdrawalScreen } from '@/screens/cash/ConfirmWithdrawalScreen';
-import { DepositScreen } from '@/screens/cash/DepositScreen';
-import { HomeScreen } from '@/screens/cash/HomeScreen';
-import { TransactionScreen } from '@/screens/cash/TransactionScreen';
-import { PaymentNetworkScreen } from '@/screens/cash/PaymentNetworkScreen';
+import { ChooseBankAccountScreen } from '@/pages/cash/ChooseBankAccountScreen';
+import { InitWithdrawalScreen } from '@/pages/cash/InitWithdrawalScreen';
+import { WithdrawInfoScreen } from '@/pages/cash/WithdrawInfoScreen';
+import { ConfirmWithdrawalScreen } from '@/pages/cash/ConfirmWithdrawalScreen';
+import { DepositScreen } from '@/pages/cash/DepositScreen';
+import { HomeScreen } from '@/pages/cash/HomeScreen';
+import { TransactionScreen } from '@/pages/cash/TransactionScreen';
+import { PaymentNetworkScreen } from '@/pages/cash/PaymentNetworkScreen';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 

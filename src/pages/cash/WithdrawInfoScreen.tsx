@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import {
   View,
-  Text,
   ScrollView,
   SafeAreaView,
   LayoutChangeEvent,
@@ -9,15 +8,15 @@ import {
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { Button } from '@/components/cash/Button/Button';
-import { styles } from './styles';
 import { Header } from '@/components/cash/Header/Header';
-import { COLORS, SPACING } from '@/styles/theme';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { RootStackParamList } from '@/navigation/types';
 import { parseLinkInText } from '@/utils';
+import Text from '@/components/ui/Text';
+import { theme } from '@/themes';
 
-// We’ll define the steps up front:
+// We'll define the steps up front:
 const steps = [
   {
     id: 'activate',
@@ -25,7 +24,7 @@ const steps = [
     description:
       "For bank accounts used for the first time, you are required to make a deposit from it first before it's enabled for withdrawals.",
     iconName: 'home-outline',
-    iconColor: COLORS.text,
+    iconColor: theme.colors.text,
   },
   {
     id: 'request',
@@ -33,7 +32,7 @@ const steps = [
     description:
       'Submit a request to withdraw USD via SWIFT from your cash account.',
     iconName: 'document-text-outline',
-    iconColor: COLORS.text,
+    iconColor: theme.colors.text,
   },
   {
     id: 'review',
@@ -41,7 +40,7 @@ const steps = [
     description:
       'Most withdrawals process within minutes, and we will notify you once your request has been approved. In some cases, such as your first withdrawal, a manual review of 1 to 3 days may be required.',
     iconName: 'time-outline',
-    iconColor: COLORS.text,
+    iconColor: theme.colors.text,
   },
   {
     id: 'receive',
@@ -50,7 +49,7 @@ const steps = [
       'Withdrawal via SWIFT typically arrives in your bank account in 1-5 business days. Your bank may charge additional processing fee to receive SWIFT transactions.',
     iconName: 'checkmark-circle',
     // A green icon for the final step
-    iconColor: COLORS.transactionStatus,
+    iconColor: theme.colors.transactionStatus,
   },
 ];
 
@@ -90,25 +89,26 @@ export const WithdrawInfoScreen: React.FC = () => {
     // and partHeights state has been updated
   }, [partHeights]);
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView
+      className="flex-1"
+      style={{ backgroundColor: theme.colors.background }}
+    >
       {/* Title at top */}
       <Header title="Withdraw CAD" />
 
       {/* Large heading */}
-      <Text style={styles.mainHeading}>Withdraw USD to your bank account</Text>
+      <Text variant="xl" weight="semibold" color="text" className="px-4 mb-6">
+        Withdraw USD to your bank account
+      </Text>
 
       {/* Steps list */}
-      <ScrollView
-        style={styles.stepsContainer}
-        contentContainerStyle={{ padding: SPACING.md }} // Space above the button
-        showsVerticalScrollIndicator={false}
-      >
+      <ScrollView className="flex-1 px-4" showsVerticalScrollIndicator={false}>
         {steps.map((step, index) => {
           const isLast = index === steps.length - 1;
           return (
-            <View key={step.id} style={styles.stepRow}>
+            <View key={step.id} className="flex-row mb-6">
               {/* Left icon & vertical line (for first 3 steps) */}
-              <View style={styles.iconContainer}>
+              <View className="items-center mr-4">
                 {isValidIconName(step.iconName) ? (
                   <Ionicons
                     name={step.iconName as IconName}
@@ -121,21 +121,23 @@ export const WithdrawInfoScreen: React.FC = () => {
                 {/* Vertical connector line except for the last step */}
                 {!isLast && (
                   <View
-                    style={[
-                      styles.verticalLine,
-                      { height: partHeights[index] || 0 },
-                    ]}
+                    className="w-px bg-border"
+                    style={{ height: partHeights[index] || 0 }}
                   />
                 )}
               </View>
 
               {/* Text content (title + description) */}
-              <View style={styles.textContainer}>
-                <Text style={styles.stepTitle}>{step.title}</Text>
+              <View className="flex-1" onLayout={handlePartLayout(index)}>
                 <Text
-                  style={styles.stepDescription}
-                  onLayout={handlePartLayout(index)}
+                  variant="md"
+                  weight="semibold"
+                  color="text"
+                  className="mb-2"
                 >
+                  {step.title}
+                </Text>
+                <Text variant="base" color="secondaryText">
                   {step.description}
                 </Text>
               </View>
@@ -144,17 +146,17 @@ export const WithdrawInfoScreen: React.FC = () => {
         })}
 
         {/* Footer info text */}
-        {/* Wrap Text inside a View with flex: 1 */}
-        <View style={{ flex: 1 }}>
-          <Text style={styles.footerText}>
+        <View className="flex-1 mb-4">
+          <Text variant="sm" color="secondaryText">
             {parseLinkInText(helpText).map((part, idx) => {
               if (part.type === 'text') {
-                return part.text; // Return plain text directly
+                return part.text;
               } else if (part.type === 'link' && part.text && part.url) {
                 return (
                   <Text
                     key={idx}
-                    style={{ color: COLORS.primary }}
+                    variant="sm"
+                    color="primary"
                     onPress={() => Linking.openURL(part.url)}
                   >
                     {part.text}
@@ -168,7 +170,10 @@ export const WithdrawInfoScreen: React.FC = () => {
       </ScrollView>
 
       {/* Fixed bottom button */}
-      <View style={styles.bottomButton}>
+      <View
+        className="px-4 py-4 border-t"
+        style={{ borderColor: theme.colors.border }}
+      >
         <Button onPress={handleClick} text="Got It" />
       </View>
     </SafeAreaView>

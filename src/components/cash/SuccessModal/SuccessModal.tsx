@@ -1,7 +1,8 @@
 import React from 'react';
-import { Modal, Pressable, Text, View } from 'react-native';
+import { Modal, Pressable, View } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import { styles } from './styles';
+import Text from '@/components/ui/Text';
+import { theme } from '@/themes';
 
 interface SuccessModalProps {
   /** Whether the modal is visible */
@@ -32,23 +33,41 @@ export const SuccessModal: React.FC<SuccessModalProps> = ({
       onRequestClose={onDismiss}
     >
       {/* Pressable to capture "tap anywhere" and dismiss */}
-      <Pressable style={styles.overlay} onPress={onDismiss}>
-        <View style={styles.container}>
-          <View style={styles.centerContainer}>
+      <Pressable
+        className="flex-1"
+        style={{ backgroundColor: theme.colors.transactionStatus }}
+        onPress={onDismiss}
+      >
+        <View className="flex-1 justify-between items-center py-8 px-4">
+          <View className="flex-1 justify-center items-center">
             {/* Checkmark in a circle */}
-            <View style={styles.checkmarkCircle}>
-              <Ionicons name="checkmark" size={40} color="white" />
+            <View
+              className="w-20 h-20 rounded-full border-2 border-text justify-center items-center mb-6"
+              style={{ borderColor: theme.colors.text }}
+            >
+              <Ionicons name="checkmark" size={40} color={theme.colors.text} />
             </View>
 
             {/* Subheading */}
-            <Text style={styles.subheadingText}>{subheading}</Text>
+            <Text variant="md" color="text" className="mb-5 text-center">
+              {subheading}
+            </Text>
 
             {/* Main heading */}
-            <Text style={styles.headingText}>{heading}</Text>
+            <Text
+              variant="xl"
+              weight="bold"
+              color="text"
+              className="text-center"
+            >
+              {heading}
+            </Text>
           </View>
 
           {/* Bottom note */}
-          <Text style={styles.tapToContinue}>Tap anywhere to continue</Text>
+          <Text variant="md" color="text" className="text-center mb-5">
+            Tap anywhere to continue
+          </Text>
         </View>
       </Pressable>
     </Modal>

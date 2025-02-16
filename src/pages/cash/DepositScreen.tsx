@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, ScrollView, SafeAreaView, Text, FlatList } from 'react-native';
+import { View, ScrollView, SafeAreaView, FlatList } from 'react-native';
 import { Header } from '@/components/cash/Header/Header';
 import { DepositInfoSection } from '@/components/cash/DepositInfoSection/DepositInfoSection';
 import { WarningsSection } from '@/components/cash/WarningsSection/WarningsSection';
@@ -11,19 +11,19 @@ import Toast, {
   ToastConfig,
   BaseToastProps,
 } from 'react-native-toast-message';
-import { styles } from './styles';
 import { VendorSelector } from '@/components/cash/VendorSelector/VendorSelector';
-import { COLORS } from '@/styles/theme';
+import { theme } from '@/themes';
+import Text from '@/components/ui/Text';
 
 const toastConfig: ToastConfig = {
   success: (props: BaseToastProps) => (
     <BaseToast
       {...props}
-      style={{ backgroundColor: COLORS.toastBackground }}
+      style={{ backgroundColor: theme.colors.toastBackground }}
       contentContainerStyle={{ paddingHorizontal: 15 }}
       text1Style={{
-        fontSize: 14,
-        color: COLORS.text,
+        fontSize: theme.fontSizes.md,
+        color: theme.colors.text,
         flexWrap: 'wrap',
       }}
       text1NumberOfLines={5}
@@ -33,8 +33,8 @@ const toastConfig: ToastConfig = {
     <ErrorToast
       {...props}
       text1Style={{
-        fontSize: 14,
-        color: COLORS.text,
+        fontSize: theme.fontSizes.md,
+        color: theme.colors.text,
         flexWrap: 'wrap',
       }}
       text1NumberOfLines={5}
@@ -91,13 +91,12 @@ const vendorOptions = ['Payper', 'DC Bank'];
 export const DepositScreen: React.FC = () => {
   const [selectedVendor, setSelectedVendor] = useState<string>(
     vendorOptions[0]
-  ); // Default to 'Payper' or your preferred default
+  );
 
   const handleSendInfo = () => {
     console.log('Send info button pressed');
   };
 
-  // Renders each bank info row
   const renderBankInfoItem = ({
     item,
   }: {
@@ -112,9 +111,16 @@ export const DepositScreen: React.FC = () => {
     selectedVendor === vendorOptions[0] ? warnings : warnings2;
 
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView
+      className="flex-1"
+      style={{ backgroundColor: theme.colors.background }}
+    >
       <Header title="USD Bank Transfer" showBackButton />
-      <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>
+      <ScrollView
+        className="flex-1"
+        style={{ backgroundColor: theme.colors.background }}
+        showsVerticalScrollIndicator={false}
+      >
         {/* Deposit Information Section */}
         <DepositInfoSection
           title="Deposit Information"
@@ -128,29 +134,31 @@ export const DepositScreen: React.FC = () => {
           vendorOptions={vendorOptions}
           selectedVendor={vendorOptions[0]}
           onVendorSelect={(vendor: string) => {
-            console.log('Vendor selected:', vendor);
             setSelectedVendor(vendor);
           }}
         />
 
-        <Text style={styles.infoNote}>
+        <Text variant="md" color="text" className="mx-4 pt-2 pb-4">
           Enter the information below into your banking app to transfer funds
           using SWIFT to your Crypto.com account
         </Text>
 
         {/* Rounded Card for Bank Info Rows */}
-        <View style={styles.bankInfoCard}>
+        <View
+          className="mx-4 my-1 rounded-lg overflow-hidden"
+          style={{ backgroundColor: theme.colors.cardBackground }}
+        >
           <FlatList
             data={currentBankInfo}
             keyExtractor={(_, index) => index.toString()}
             renderItem={renderBankInfoItem}
-            ItemSeparatorComponent={() => null} // remove any default line separators
-            scrollEnabled={false} // disable scroll to avoid nested scrolling
+            ItemSeparatorComponent={() => null}
+            scrollEnabled={false}
           />
         </View>
       </ScrollView>
 
-      <View style={styles.bottomButton}>
+      <View className="px-4 pt-1 pb-4">
         <EmailButton onPress={handleSendInfo} code="CDCW" timeout={10} />
       </View>
 

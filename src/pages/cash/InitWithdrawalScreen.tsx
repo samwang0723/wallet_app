@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { styles } from './styles';
 import { View, TouchableWithoutFeedback, Keyboard } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Header } from '@/components/cash/Header/Header';
@@ -10,7 +9,8 @@ import { RouteProp, useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { RootStackParamList } from '@/navigation/types';
 import { formatAmount } from '@/utils';
-import { WithdrawalInfo } from '@/store/types';
+import { WithdrawalInfo } from '@/domains/model';
+import { theme } from '@/themes';
 
 type InitWithdrawalScreenNavigationProp = StackNavigationProp<
   RootStackParamList,
@@ -56,14 +56,17 @@ export const InitWithdrawalScreen: React.FC<InitWithdrawalScreenProps> = ({
 
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-      <SafeAreaView style={styles.container}>
+      <SafeAreaView
+        className="flex-1"
+        style={{ backgroundColor: theme.colors.background }}
+      >
         <Header
           title="Withdraw CAD"
           showBackButton
           showInfoButton
           onPress={() => navigation.navigate('WithdrawInfo')}
         />
-        <View style={{ flex: 1 }}>
+        <View className="flex-1">
           {/* Amount input */}
           <AmountInput
             onAmountChange={handleAmountChange}
@@ -73,7 +76,10 @@ export const InitWithdrawalScreen: React.FC<InitWithdrawalScreenProps> = ({
           {/* Daily limit */}
           <DailyLimit used={5000} total={25000} />
         </View>
-        <View style={styles.bottomButton}>
+        <View
+          className="px-4 py-4"
+          style={{ borderColor: theme.colors.border }}
+        >
           <Button onPress={handleClick} amount={amount} text={'Withdraw'} />
         </View>
       </SafeAreaView>

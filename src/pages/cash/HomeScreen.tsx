@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import {
-  Text,
   SafeAreaView,
   View,
   TouchableOpacity,
@@ -10,11 +9,12 @@ import {
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { Ionicons } from '@expo/vector-icons';
-import { styles } from './styles';
 import { Header } from '@/components/cash/Header/Header';
 import { RootStackParamList } from '@/navigation/types';
 import { TransactionSection } from '@/components/cash/TransactionSection/TransactionSection';
-import { BankAccount, PaymentNetwork, Transaction } from '@/store/types';
+import { BankAccount, PaymentNetwork, Transaction } from '@/domains/model';
+import Text from '@/components/ui/Text';
+import { theme } from '@/themes';
 
 const transactions: Transaction[] = [
   {
@@ -88,65 +88,87 @@ export const HomeScreen = () => {
   const [isBalanceVisible, setIsBalanceVisible] = useState(true);
   const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView
+      className="flex-1"
+      style={{ backgroundColor: theme.colors.background }}
+    >
       {/* Header */}
       <Header title="" showBackButton showFaqButton />
-      <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>
+      <ScrollView className="flex-1" showsVerticalScrollIndicator={false}>
         {/* Account Type */}
-        <View style={styles.accountType}>
+        <View className="flex-row items-center justify-center mb-5">
           <Image
             source={{ uri: 'https://flagcdn.com/w80/us.png' }}
-            style={styles.flag}
+            className="w-5 h-5 rounded-full mr-2 border"
+            style={{ borderColor: theme.colors.text }}
           />
-          <Text style={styles.accountText}>USD Account</Text>
+          <Text variant="md" weight="bold" color="text">
+            USD Account
+          </Text>
         </View>
 
         {/* Balance Section */}
-        <View style={styles.balanceContainer}>
-          <View style={styles.balanceLabelContainer}>
-            <Text style={styles.balanceLabel}>Total Balance</Text>
+        <View className="items-center mb-8">
+          <View className="flex-row items-center">
+            <Text variant="md" color="secondaryText">
+              Total Balance
+            </Text>
             <TouchableOpacity
+              className="p-1 ml-0.5"
               onPress={() => setIsBalanceVisible(!isBalanceVisible)}
-              style={styles.eyeButton}
             >
               <Ionicons
                 name={isBalanceVisible ? 'eye-outline' : 'eye-off-outline'}
                 size={20}
-                color="#8E8E93"
+                color={theme.colors.secondaryText}
               />
             </TouchableOpacity>
           </View>
-          <Text style={styles.balance}>
+          <Text variant="xxl" weight="semibold" color="text">
             {isBalanceVisible ? '$ 0.85 USD' : '*****'}
           </Text>
         </View>
 
         {/* Action Buttons */}
-        <View style={styles.actionButtons}>
+        <View className="flex-row justify-around px-8 mb-10">
           <TouchableOpacity
-            style={styles.actionButton}
+            className="items-center"
             onPress={() =>
               navigation.navigate('PaymentNetwork', {
                 paymentNetworks: depositMethods,
               })
-            } // Navigate to Deposit screen
+            }
           >
-            <View style={styles.actionIcon}>
-              <Text style={styles.plusMinus}>+</Text>
+            <View
+              className="w-[50px] h-[50px] rounded-full justify-center items-center mb-2"
+              style={{ backgroundColor: theme.colors.actionButtonBackground }}
+            >
+              <Text variant="xxxl" weight="regular" color="text">
+                +
+              </Text>
             </View>
-            <Text style={styles.actionText}>Deposit</Text>
+            <Text variant="md" color="text">
+              Deposit
+            </Text>
           </TouchableOpacity>
 
           <TouchableOpacity
-            style={styles.actionButton}
+            className="items-center"
             onPress={() =>
               navigation.navigate('ChooseBankAccount', { bankAccounts })
-            } // Navigate to ChooseBankAccount screen
+            }
           >
-            <View style={styles.actionIcon}>
-              <Text style={styles.plusMinus}>-</Text>
+            <View
+              className="w-[50px] h-[50px] rounded-full justify-center items-center mb-2"
+              style={{ backgroundColor: theme.colors.actionButtonBackground }}
+            >
+              <Text variant="xxxl" weight="regular" color="text">
+                -
+              </Text>
             </View>
-            <Text style={styles.actionText}>Withdraw</Text>
+            <Text variant="md" color="text">
+              Withdraw
+            </Text>
           </TouchableOpacity>
         </View>
 

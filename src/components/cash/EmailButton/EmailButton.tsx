@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { TouchableOpacity, Text, View } from 'react-native';
-import { styles } from './styles';
+import { TouchableOpacity, View } from 'react-native';
+import Text from '@/components/ui/Text';
+import { theme } from '@/themes';
 
 interface ButtonProps {
   code: string;
@@ -43,31 +44,41 @@ export const EmailButton: React.FC<ButtonProps> = ({
   const isButtonDisabled = isTimerActive && countdown > 0;
 
   return (
-    <View style={styles.container}>
+    <View className="py-1.5 items-center">
       {isTimerActive && (
-        <View style={styles.topContainer}>
-          <View style={styles.instructionContainer}>
-            <Text style={styles.instructionText}>
+        <View className="flex-row justify-between items-center mb-1">
+          <View className="flex-1 mr-1.5">
+            <Text variant="base" color="secondaryText">
               Ensure the 4-digit verification code shown here and the one in the
               email subject line match up.
             </Text>
           </View>
 
-          <View style={styles.codeContainer}>
-            <Text style={styles.codeText}>{code}</Text>
+          <View
+            className="border border-primary rounded-lg px-4 py-2 my-4"
+            style={{ borderColor: theme.colors.primary }}
+          >
+            <Text variant="base" color="primary" weight="medium">
+              {code}
+            </Text>
           </View>
         </View>
       )}
       <TouchableOpacity
-        style={[styles.button, isButtonDisabled && styles.buttonDisabled]}
+        className="w-full p-4 rounded items-center"
+        style={{
+          backgroundColor: isButtonDisabled
+            ? theme.colors.primaryDisable
+            : theme.colors.primary,
+        }}
         onPress={handlePress}
         disabled={isButtonDisabled}
       >
         <Text
-          style={[
-            styles.buttonText,
-            isButtonDisabled && styles.buttonTextDisabled,
-          ]}
+          variant="md"
+          weight="medium"
+          color={isButtonDisabled ? 'textDisabled' : 'text'}
+          className="text-center"
         >
           {isTimerActive
             ? `Email Sent. Available again in ${countdown}s`

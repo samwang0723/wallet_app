@@ -1,14 +1,14 @@
 /* eslint-disable  @typescript-eslint/no-explicit-any */
 import React from 'react';
-import { Text, View, ScrollView, TouchableOpacity } from 'react-native';
-import { styles } from './styles';
+import { View, ScrollView, TouchableOpacity } from 'react-native';
 import { RootStackParamList } from '@/navigation/types';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Header } from '@/components/cash/Header/Header';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { RouteProp, useNavigation } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
-import { COLORS, SPACING } from '@/styles/theme';
+import { theme } from '@/themes';
+import Text from '@/components/ui/Text';
 
 type PaymentNetworkScreenNavigationProp = StackNavigationProp<
   RootStackParamList,
@@ -31,14 +31,13 @@ export const PaymentNetworkScreen: React.FC<PaymentNetworkScreenProps> = ({
   const { paymentNetworks } = route.params;
   const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView
+      className="flex-1"
+      style={{ backgroundColor: theme.colors.background }}
+    >
       <Header title="Choose Deposit Method" showBackButton />
-      <ScrollView
-        style={styles.content}
-        contentContainerStyle={{ padding: SPACING.md }}
-        showsVerticalScrollIndicator={false}
-      >
-        {/* Transaction List */}
+      <ScrollView className="flex-1 p-4" showsVerticalScrollIndicator={false}>
+        {/* Payment Network List */}
         {paymentNetworks.map((item) => (
           <TouchableOpacity
             key={item.id}
@@ -46,29 +45,47 @@ export const PaymentNetworkScreen: React.FC<PaymentNetworkScreenProps> = ({
               navigation.navigate('Deposit');
             }}
           >
-            <View style={styles.textContainer}>
-              {/* Icon on the left */}
-              <View style={styles.methodContainer}>
+            <View className="mb-4">
+              {/* Icon and Title Row */}
+              <View className="flex-row items-center mb-2">
                 <Ionicons
                   name={item.iconName as any}
                   size={22}
-                  color={COLORS.text}
+                  color={theme.colors.text}
                 />
-                <Text style={styles.methodTitle}>{item.title}</Text>
+                <Text
+                  variant="lg"
+                  weight="semibold"
+                  color="text"
+                  className="ml-3"
+                >
+                  {item.title}
+                </Text>
               </View>
 
-              {/* Text content */}
-              <View style={styles.textContainer}>
-                {/* Description */}
-                <Text style={styles.methodDescription}>{item.description}</Text>
+              {/* Description and Badge */}
+              <View>
+                <Text variant="md" color="secondaryText" className="mb-2">
+                  {item.description}
+                </Text>
                 {item.recommended && (
-                  <View style={styles.recommendedBadge}>
-                    <Text style={styles.recommendedText}>Recommended</Text>
+                  <View
+                    className="self-start rounded px-2 py-1"
+                    style={{
+                      backgroundColor: theme.colors.actionButtonBackground,
+                    }}
+                  >
+                    <Text variant="md" color="primary">
+                      Recommended
+                    </Text>
                   </View>
                 )}
               </View>
             </View>
-            <View style={styles.separator} />
+            <View
+              className="h-px mb-4"
+              style={{ backgroundColor: theme.colors.border }}
+            />
           </TouchableOpacity>
         ))}
       </ScrollView>

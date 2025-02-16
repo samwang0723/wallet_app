@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, Modal, Pressable } from 'react-native';
-import { styles } from './styles';
+import { View, TouchableOpacity, Modal, Pressable } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import { COLORS } from '@/styles/theme';
+import Text from '@/components/ui/Text';
+import { theme } from '@/themes';
 
 /**
  * Defines the props for VendorSelector:
@@ -38,11 +38,20 @@ export const VendorSelector: React.FC<VendorSelectorProps> = ({
   };
 
   return (
-    <View style={styles.container}>
+    <View
+      className="flex-1 justify-center py-1 px-4"
+      style={{ backgroundColor: theme.colors.background }}
+    >
       {/* Main "option" button */}
-      <TouchableOpacity style={styles.selector} onPress={openModal}>
-        <Text style={styles.selectorText}>{selectedVendor}</Text>
-        <Ionicons name="chevron-down" size={20} color="#FFF" />
+      <TouchableOpacity
+        className="px-4 py-2 rounded-3xl flex-row items-center self-start"
+        style={{ backgroundColor: theme.colors.cardBackground }}
+        onPress={openModal}
+      >
+        <Text variant="md" color="text" className="pr-1">
+          {selectedVendor}
+        </Text>
+        <Ionicons name="chevron-down" size={22} color={theme.colors.text} />
       </TouchableOpacity>
 
       {/* Bottom sheet–style modal */}
@@ -52,19 +61,32 @@ export const VendorSelector: React.FC<VendorSelectorProps> = ({
         transparent
         onRequestClose={closeModal}
       >
-        {/* Pressable backdrop (tapping outside closes the modal) */}
-        <Pressable style={styles.modalOverlay} onPress={closeModal} />
+        {/* Pressable backdrop */}
+        <Pressable
+          className="flex-1"
+          style={{ backgroundColor: theme.colors.modalBackground }}
+          onPress={closeModal}
+        />
 
-        <View style={styles.modalContainer}>
+        <View
+          className="absolute bottom-0 w-full rounded-t-xl pb-16 px-4"
+          style={{ backgroundColor: theme.colors.cardBackground }}
+        >
           {/* Header row */}
-          <View style={styles.modalHeader}>
-            <Text style={styles.modalTitle}>Select Provider</Text>
+          <View className="flex-row items-center justify-center py-4 px-4">
+            <Text variant="lg" weight="semibold" color="text">
+              Select Provider
+            </Text>
             <TouchableOpacity
+              className="absolute right-2"
               onPress={closeModal}
-              style={styles.closeButton}
               hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
             >
-              <Ionicons name="close" size={24} color={COLORS.secondaryText} />
+              <Ionicons
+                name="close"
+                size={24}
+                color={theme.colors.secondaryText}
+              />
             </TouchableOpacity>
           </View>
 
@@ -74,15 +96,18 @@ export const VendorSelector: React.FC<VendorSelectorProps> = ({
             return (
               <TouchableOpacity
                 key={vendor}
-                style={styles.optionRow}
+                className="flex-row items-center justify-between py-5 px-4 border-b"
+                style={{ borderColor: theme.colors.border }}
                 onPress={() => handleSelectVendor(vendor)}
               >
-                <Text style={styles.optionText}>{vendor}</Text>
+                <Text variant="md" color="text">
+                  {vendor}
+                </Text>
                 {isSelected && (
                   <Ionicons
                     name="checkmark"
-                    size={18}
-                    color="#0A84FF"
+                    size={22}
+                    color={theme.colors.primary}
                     style={{ marginLeft: 8 }}
                   />
                 )}

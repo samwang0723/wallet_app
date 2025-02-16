@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, Image } from 'react-native';
-import { styles } from './styles';
-import { COLORS } from '@/styles/theme';
+import { View, TextInput, Image } from 'react-native';
+import Text from '@/components/ui/Text';
+import { theme } from '@/themes';
 import { currencyDecimals } from '@/utils';
 
 /**
- * AmountInput component recreating the “Amount” field, the box with
- * “CAD” on the right, and the fee note below it.
+ * AmountInput component recreating the "Amount" field, the box with
+ * "CAD" on the right, and the fee note below it.
  */
 interface AmountInputProps {
   onAmountChange: (amount: number) => void;
@@ -85,36 +85,47 @@ export const AmountInput: React.FC<AmountInputProps> = ({
   };
 
   return (
-    <View style={styles.amountContainer}>
+    <View className="p-4 mb-4">
       {/* Label */}
-      <Text style={styles.label}>Amount</Text>
+      <Text variant="md" color="secondaryText" className="mb-2">
+        Amount
+      </Text>
 
-      {/* Input container with border, “20.00”, and “CAD” + flag on right */}
-      <View style={styles.amountInputWrapper}>
+      {/* Input container with border, "20.00", and "CAD" + flag on right */}
+      <View
+        className="flex-row items-center border rounded-lg px-3 py-4"
+        style={{
+          backgroundColor: theme.colors.cardBackground,
+          borderColor: theme.colors.primary,
+        }}
+      >
         <TextInput
-          style={styles.amountInput}
+          className="flex-1"
+          style={{ color: theme.colors.text, fontSize: theme.fontSizes.lg }}
           placeholder="20.00"
-          placeholderTextColor={COLORS.secondaryText}
+          placeholderTextColor={theme.colors.secondaryText}
           keyboardType="decimal-pad"
           onChangeText={handleAmountChange}
           onBlur={handleBlur}
           onFocus={handleFocus}
           value={amount}
         />
-        {/* Right side: flag icon + “CAD” */}
-        <View style={styles.currencyContainer}>
+        {/* Right side: flag icon + "CAD" */}
+        <View className="flex-row items-center">
           {/* Placeholder: Replace with your own flag image or Ionicon */}
-          {/* Example: <Image source={require('./assets/cad-flag.png')} ... /> */}
           <Image
             source={{ uri: 'https://flagcdn.com/w80/ca.png' }}
-            style={styles.flag}
+            className="w-5 h-5 rounded-full mr-1 border"
+            style={{ borderColor: theme.colors.secondaryText }}
           />
-          <Text style={styles.currencyText}>CAD</Text>
+          <Text variant="md" color="text" weight="medium">
+            {currency}
+          </Text>
         </View>
       </View>
 
       {/* Fee note */}
-      <Text style={styles.feeText}>
+      <Text variant="base" color="secondaryText" className="mt-2">
         A $1.99 fee will be applied to this transaction
       </Text>
     </View>

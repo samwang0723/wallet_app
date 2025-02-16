@@ -1,4 +1,4 @@
-import { AppState } from '@/store/types';
+import { AppState } from '@/domains/model';
 import React from 'react';
 
 interface AppContextProps {

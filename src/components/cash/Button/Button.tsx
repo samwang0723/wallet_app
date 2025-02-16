@@ -1,14 +1,21 @@
 import React from 'react';
-import { TouchableOpacity, Text, View } from 'react-native';
-import { styles } from './styles';
+import { TouchableOpacity, View } from 'react-native';
+import Text from '@/components/ui/Text';
+import { theme } from '@/themes';
 
 interface ButtonProps {
   amount?: number;
   text: string;
   onPress: () => void;
+  disabled?: boolean;
 }
 
-export const Button: React.FC<ButtonProps> = ({ amount, text, onPress }) => {
+export const Button: React.FC<ButtonProps> = ({
+  amount,
+  text,
+  onPress,
+  disabled,
+}) => {
   const handlePress = () => {
     onPress();
   };
@@ -16,17 +23,22 @@ export const Button: React.FC<ButtonProps> = ({ amount, text, onPress }) => {
   const isButtonDisabled = amount == 0;
 
   return (
-    <View style={styles.container}>
+    <View className="py-1.5 items-center">
       <TouchableOpacity
-        style={[styles.button, isButtonDisabled && styles.buttonDisabled]}
+        className="w-full p-4 rounded items-center"
+        style={{
+          backgroundColor: isButtonDisabled
+            ? theme.colors.primaryDisable
+            : theme.colors.primary,
+        }}
         onPress={handlePress}
-        disabled={isButtonDisabled}
+        disabled={disabled}
       >
         <Text
-          style={[
-            styles.buttonText,
-            isButtonDisabled && styles.buttonTextDisabled,
-          ]}
+          variant="md"
+          weight="medium"
+          color={disabled ? 'textDisabled' : 'text'}
+          className="text-center"
         >
           {text}
         </Text>

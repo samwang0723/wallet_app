@@ -1,21 +1,21 @@
-import { css } from "styled-components/native";
-import { AppTheme } from "@/themes/styled";
+import { css } from 'styled-components/native';
+import { AppTheme } from '@/themes/styled';
 
 export type ThemeStyleUtilProps = {
-  p?: keyof AppTheme["spacing"]["padding"];
-  m?: keyof AppTheme["spacing"]["margin"];
-  px?: keyof AppTheme["spacing"]["padding"];
-  py?: keyof AppTheme["spacing"]["padding"];
-  mx?: keyof AppTheme["spacing"]["margin"];
-  my?: keyof AppTheme["spacing"]["margin"];
-  rounded?: keyof AppTheme["radius"];
-  bg?: keyof AppTheme["colors"];
+  p?: keyof AppTheme['spacing']['padding'];
+  m?: keyof AppTheme['spacing']['margin'];
+  px?: keyof AppTheme['spacing']['padding'];
+  py?: keyof AppTheme['spacing']['padding'];
+  mx?: keyof AppTheme['spacing']['margin'];
+  my?: keyof AppTheme['spacing']['margin'];
+  rounded?: keyof AppTheme['radius'];
+  bg?: keyof AppTheme['colors'];
 
-  fontSize?: keyof AppTheme["sizes"];
-  textAlign?: keyof AppTheme["align"];
-  weight?: keyof AppTheme["weights"];
+  fontSize?: keyof AppTheme['sizes'];
+  textAlign?: keyof AppTheme['align'];
+  weight?: keyof AppTheme['weights'];
 
-  opacity?: keyof AppTheme["opacity"];
+  opacity?: keyof AppTheme['opacity'];
 };
 
 export const themeStyle = ({

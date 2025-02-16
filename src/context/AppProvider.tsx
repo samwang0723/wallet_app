@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { AppContext } from './AppContext';
-import { AppState } from '@/store/types';
+import { AppState } from '@/domains/model';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 interface AppProviderProps {

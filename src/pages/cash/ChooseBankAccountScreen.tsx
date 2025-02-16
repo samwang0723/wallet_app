@@ -1,13 +1,13 @@
 import React from 'react';
-import { Text, ScrollView, TouchableOpacity } from 'react-native';
-import { styles } from './styles';
+import { ScrollView, TouchableOpacity } from 'react-native';
 import { RootStackParamList } from '@/navigation/types';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Header } from '@/components/cash/Header/Header';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { RouteProp, useNavigation } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
-import { COLORS } from '@/styles/theme';
+import { theme } from '@/themes';
+import Text from '@/components/ui/Text';
 
 type ChooseBankAccountScreenNavigationProp = StackNavigationProp<
   RootStackParamList,
@@ -30,24 +30,30 @@ export const ChooseBankAccountScreen: React.FC<
   const { bankAccounts } = route.params;
   const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView
+      className="flex-1"
+      style={{ backgroundColor: theme.colors.background }}
+    >
       <Header title="Choose Withdrawal Email" showBackButton showInfoButton />
-      <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>
+      <ScrollView className="flex-1" showsVerticalScrollIndicator={false}>
         {/* Email List */}
         {bankAccounts.map((bankAccount) => {
           return (
             <TouchableOpacity
               key={bankAccount.accountName}
-              style={styles.optionRow}
+              className="flex-row items-center justify-between px-4 py-5 border-b"
+              style={{ borderColor: theme.colors.border }}
               onPress={() => {
                 navigation.navigate('InitWithdrawal', { currency: 'CAD' });
               }}
             >
-              <Text style={styles.optionText}>{bankAccount.accountName}</Text>
+              <Text variant="md" color="text">
+                {bankAccount.accountName}
+              </Text>
               <Ionicons
                 name="chevron-forward"
-                size={18}
-                color={COLORS.secondaryText}
+                size={22}
+                color={theme.colors.secondaryText}
                 style={{ marginLeft: 8 }}
               />
             </TouchableOpacity>

@@ -1,9 +1,10 @@
 import React from 'react';
-import { Text, View, TouchableOpacity } from 'react-native';
-import { styles } from './styles';
-import { Transaction } from '@/types';
+import { View, TouchableOpacity } from 'react-native';
+import Text from '@/components/ui/Text';
+import { Transaction } from '@/domains/model';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
+import { theme } from '@/themes';
 
 interface TransactionSectionProps {
   transactions: Transaction[];
@@ -26,26 +27,46 @@ export const TransactionSection: React.FC<TransactionSectionProps> = ({
   };
 
   return (
-    <View style={styles.transactionsContainer}>
-      <View style={styles.transactionsHeader}>
-        <Text style={styles.transactionsTitle}>Recent Transactions</Text>
+    <View
+      className="mx-4 my-1 rounded-lg overflow-hidden"
+      style={{ backgroundColor: theme.colors.cardBackground }}
+    >
+      <View className="flex-row justify-between items-center m-5">
+        <Text variant="lg" weight="semibold" color="text">
+          Recent Transactions
+        </Text>
         <TouchableOpacity onPress={() => handlePress(transactions)}>
-          <Text style={styles.seeAll}>See All</Text>
+          <Text variant="base" color="primary">
+            See All
+          </Text>
         </TouchableOpacity>
       </View>
 
       {/* Transaction List */}
       {transactions.map((transaction) => (
-        <View key={transaction.id} style={styles.transactionItem}>
+        <View
+          key={transaction.id}
+          className="flex-row justify-between items-center mx-5 mb-5 pl-5"
+        >
           <View>
-            <Text style={styles.transactionTitle}>{transaction.title}</Text>
-            <View style={styles.transactionSubtitle}>
-              <Text style={styles.transactionDate}>{transaction.date}</Text>
-              <Text style={styles.dot}>•</Text>
-              <Text style={styles.transactionStatus}>{transaction.status}</Text>
+            <Text variant="md" color="text" className="mb-1">
+              {transaction.title}
+            </Text>
+            <View className="flex-row items-center">
+              <Text variant="base" color="secondaryText">
+                {transaction.date}
+              </Text>
+              <Text variant="md" color="secondaryText" className="mx-1">
+                •
+              </Text>
+              <Text variant="base" color="transactionStatus">
+                {transaction.status}
+              </Text>
             </View>
           </View>
-          <Text style={styles.transactionAmount}>{transaction.amount}</Text>
+          <Text variant="md" color="text" weight="regular">
+            {transaction.amount}
+          </Text>
         </View>
       ))}
     </View>

@@ -45,7 +45,7 @@ export const Header: React.FC<HeaderProps> = ({
 
       {/* Center: Title */}
       <View className="flex-1 items-center justify-center">
-        <Text variant="md" weight="bold" color="text">
+        <Text variant="lg" weight="bold" color="text">
           {title}
         </Text>
       </View>

@@ -3,7 +3,7 @@ import {
   PaymentNetwork,
   Transaction,
   WithdrawalInfo,
-} from '@/store/types';
+} from '@/domains/model';
 
 export type RootStackParamList = {
   Home: undefined;

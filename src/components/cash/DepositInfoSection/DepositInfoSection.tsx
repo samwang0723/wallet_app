@@ -1,8 +1,8 @@
 import React from 'react';
-import { View, Text, Linking } from 'react-native';
+import { View, Linking } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import { styles } from './styles';
-import { COLORS } from '@/styles/theme';
+import Text from '@/components/ui/Text';
+import { theme } from '@/themes';
 import { parseLinkInText } from '@/utils';
 
 interface DepositInfoSectionProps {
@@ -15,19 +15,25 @@ export const DepositInfoSection: React.FC<DepositInfoSectionProps> = ({
   bullets,
 }) => {
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>{title}</Text>
+    <View className="px-4 pb-2 bg-background">
+      <Text variant="xl" weight="bold" color="text" className="mb-2">
+        {title}
+      </Text>
       {bullets.map((item, index) => (
-        <View key={index} style={styles.bulletRow}>
+        <View key={index} className="flex-row items-center my-1 flex-wrap">
           <Ionicons
             name="ellipse"
             size={6}
-            color={COLORS.text}
-            style={styles.bulletIcon}
+            color={theme.colors.text}
+            style={{ marginRight: 12 }}
           />
           {/* Wrap Text inside a View with flex: 1 */}
-          <View style={{ flex: 1 }}>
-            <Text style={styles.bulletText}>
+          <View className="flex-1">
+            <Text
+              variant="base"
+              color="secondaryText"
+              className="flex-wrap flex-shrink"
+            >
               {parseLinkInText(item).map((part, idx) => {
                 if (part.type === 'text') {
                   return part.text; // Return plain text directly
@@ -35,7 +41,8 @@ export const DepositInfoSection: React.FC<DepositInfoSectionProps> = ({
                   return (
                     <Text
                       key={idx}
-                      style={styles.linkStyle}
+                      variant="base"
+                      color="primary"
                       onPress={() => Linking.openURL(part.url)}
                     >
                       {part.text}

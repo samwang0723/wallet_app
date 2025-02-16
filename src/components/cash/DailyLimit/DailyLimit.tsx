@@ -1,6 +1,7 @@
 import React from 'react';
-import { View, Text } from 'react-native';
-import { styles } from './styles';
+import { View } from 'react-native';
+import Text from '@/components/ui/Text';
+import { theme } from '@/themes';
 
 /**
  * DailyLimit component showing the usage bar, limit info, and extra text.
@@ -14,24 +15,44 @@ export const DailyLimit: React.FC<DailyLimitProps> = ({ used, total }) => {
   const progressPercent = Math.min((used / total) * 100, 100);
   return (
     <>
-      <View style={styles.headerRow}>
-        <Text style={styles.sectionTitle}>Daily Limit</Text>
+      <View
+        className="flex-row justify-between items-center bg-cardBackground border-b border-border"
+        style={{
+          borderColor: theme.colors.border,
+          backgroundColor: theme.colors.cardBackground,
+        }}
+      >
+        <Text
+          variant="md"
+          weight="medium"
+          color="secondaryText"
+          className="my-3 mx-4"
+        >
+          Daily Limit
+        </Text>
       </View>
-      <View style={styles.dailyLimitContainer}>
+      <View className="p-4">
         {/* Usage text e.g. "$5,000 / 25,000 CAD" */}
-        <Text style={styles.limitText}>
+        <Text variant="base" color="secondaryText" className="mb-2.5">
           ${used.toLocaleString()}/{total.toLocaleString()} CAD
         </Text>
 
         {/* Progress bar */}
-        <View style={styles.progressBarBackground}>
+        <View
+          className="h-1.5 rounded overflow-hidden mb-1.5"
+          style={{ backgroundColor: '#1f283c' }}
+        >
           <View
-            style={[styles.progressBarFill, { width: `${progressPercent}%` }]}
+            className="h-1.5"
+            style={{
+              width: `${progressPercent}%`,
+              backgroundColor: theme.colors.transactionStatus,
+            }}
           />
         </View>
 
         {/* Min/Max limit info */}
-        <Text style={styles.limitNote}>
+        <Text variant="base" color="secondaryText" className="mt-1">
           You may withdraw between $100 and $25,000 CAD at a time
         </Text>
       </View>

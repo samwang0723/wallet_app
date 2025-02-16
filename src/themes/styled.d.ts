@@ -1,10 +1,10 @@
-import "styled-components/native";
+import 'styled-components/native';
 
-import theme from ".";
+import theme from '.';
 
 export type AppTheme = typeof theme;
 
-declare module "styled-components/native" {
+declare module 'styled-components/native' {
   // eslint-disable-next-line @typescript-eslint/no-empty-object-type
   export interface DefaultTheme extends AppTheme {}
 }
