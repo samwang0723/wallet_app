@@ -15,6 +15,7 @@ import { TransactionSection } from '@/components/cash/TransactionSection/Transac
 import { BankAccount, PaymentNetwork, Transaction } from '@/domains/model';
 import Text from '@/components/ui/Text';
 import { theme } from '@/themes';
+import { OccupationSelector } from '@/components/edd/OccupationSelector/OccupationSelector';
 
 const transactions: Transaction[] = [
   {
@@ -86,6 +87,7 @@ const depositMethods: PaymentNetwork[] = [
 
 export const HomeScreen = () => {
   const [isBalanceVisible, setIsBalanceVisible] = useState(true);
+  const [occupation, setOccupation] = useState('');
   const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
   return (
     <SafeAreaView
@@ -174,6 +176,15 @@ export const HomeScreen = () => {
 
         {/* Transactions Section */}
         <TransactionSection transactions={transactions} />
+
+        {/* Occupation Selector */}
+        <View className="px-4 pt-4">
+          <OccupationSelector
+            value={occupation}
+            onChange={setOccupation}
+            required
+          />
+        </View>
       </ScrollView>
     </SafeAreaView>
   );

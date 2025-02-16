@@ -24,4 +24,7 @@ export type RootStackParamList = {
   PaymentNetwork: {
     paymentNetworks: PaymentNetwork[];
   };
+  OccupationList: {
+    currentValue?: string;
+  };
 };

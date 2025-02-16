@@ -1,5 +1,4 @@
 import { DefaultTheme } from 'styled-components/native';
-import { Dimensions } from 'react-native';
 
 export const theme: DefaultTheme = {
   colors: {
@@ -16,6 +15,7 @@ export const theme: DefaultTheme = {
     transactionStatus: '#58c5b5', // Green for transaction status
     modalBackground: 'rgba(0, 0, 0, 0.5)', // Dark overlay for modals
     toastBackground: '#333', // Dark grey for toasts
+    error: '#FF0000', // Red for errors
   },
   spacing: {
     xs: 4,
@@ -23,10 +23,6 @@ export const theme: DefaultTheme = {
     md: 16,
     lg: 24,
     xl: 32,
-  },
-  dimensions: {
-    screenWidth: Dimensions.get('window').width,
-    screenHeight: Dimensions.get('window').height,
   },
   borderRadius: {
     sm: 4,
