@@ -27,7 +27,7 @@ export const Header: React.FC<HeaderProps> = ({
 
   return (
     <View
-      className="h-14 flex-row items-center border-b-0 mb-2"
+      className="flex h-14 flex-row items-center border-b-0 mb-2"
       style={{ backgroundColor: theme.colors.background }}
     >
       {/* Left Container: Show arrow if showBackButton = true */}
