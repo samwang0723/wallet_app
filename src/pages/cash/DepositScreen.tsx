@@ -14,6 +14,7 @@ import Toast, {
 import { VendorSelector } from '@/components/cash/VendorSelector/VendorSelector';
 import { theme } from '@/themes';
 import Text from '@/components/ui/Text';
+import { logger } from '@/utils/logger';
 
 const toastConfig: ToastConfig = {
   success: (props: BaseToastProps) => (
@@ -94,7 +95,7 @@ export const DepositScreen: React.FC = () => {
   );
 
   const handleSendInfo = () => {
-    console.log('Send info button pressed');
+    logger.warn('Send info button pressed', { showToast: true });
   };
 
   const renderBankInfoItem = ({
