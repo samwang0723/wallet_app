@@ -10,6 +10,7 @@ import { StackNavigationProp } from '@react-navigation/stack';
 import { RootStackParamList } from '@/navigation/types';
 import { formatAmount } from '@/utils';
 import { WithdrawalInfo } from '@/domains/model';
+import { WithdrawalProcessDetails } from '@/services/cash/model';
 import { theme } from '@/themes';
 
 type InitWithdrawalScreenNavigationProp = StackNavigationProp<
@@ -54,6 +55,50 @@ export const InitWithdrawalScreen: React.FC<InitWithdrawalScreenProps> = ({
     navigation.navigate('ConfirmWithdrawal', { withdrawalInfo });
   };
 
+  // Create a mock WithdrawalProcessDetails object
+  const mockDetails: WithdrawalProcessDetails = {
+    ok: true,
+    details: {
+      currency: currency,
+      viban_type: 'standard',
+      minimum_withdrawal_amount_in_usd: { currency: 'USD', amount: '10' },
+      monthly_quota_in_usd: { currency: 'USD', amount: '100000' },
+      daily_quota_in_usd: { currency: 'USD', amount: '25000' },
+      used_daily_quota_in_usd: { currency: 'USD', amount: '5000' },
+      used_monthly_quota_in_usd: { currency: 'USD', amount: '10000' },
+      minimum_withdrawal_amount: { currency, amount: '10' },
+      monthly_quota: { currency, amount: '100000' },
+      daily_quota: { currency, amount: '25000' },
+      used_daily_quota: { currency, amount: '5000' },
+      used_monthly_quota: { currency, amount: '10000' },
+      remaining_daily_quota: { currency, amount: '20000' },
+      remaining_monthly_quota: { currency, amount: '90000' },
+      remaining_daily_quota_in_usd: { currency: 'USD', amount: '20000' },
+      remaining_monthly_quota_in_usd: { currency: 'USD', amount: '90000' },
+      network_name: 'Interac',
+      review_time_description: 'Instant',
+      bank_transfer_time_description: '1-3 business days',
+      had_deposited: true,
+      had_withdrawn: false,
+      fees: [],
+      fee_amount: { currency, amount: '1.99' },
+      fee_label: { translation_key: 'fee_label', translation_payload: [] },
+      transactions_per_day: 10,
+      transactions_per_month: 100,
+      transactions_daily_count: 2,
+      transactions_monthly_count: 5,
+      remaining_transactions_daily_count: 8,
+      remaining_transactions_monthly_count: 95,
+      beneficiaries_count: 1,
+      beneficiaries_max: 5,
+      maximum_withdrawal_amount: { currency, amount: '10000' },
+      maximum_withdrawal_amount_in_usd: { currency: 'USD', amount: '10000' },
+      can_add_bank_account: true,
+      can_delete_bank_account: true,
+      max_bank_accounts: 5,
+    },
+  };
+
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <SafeAreaView
@@ -67,11 +112,14 @@ export const InitWithdrawalScreen: React.FC<InitWithdrawalScreenProps> = ({
           onPress={() => navigation.navigate('WithdrawInfo')}
         />
         <View className="flex-1">
-          {/* Amount input */}
-          <AmountInput
-            onAmountChange={handleAmountChange}
-            currency={currency}
-          />
+          <View className="px-4 pb-4">
+            {/* Amount input */}
+            <AmountInput
+              onAmountChange={handleAmountChange}
+              onError={() => {}}
+              details={mockDetails}
+            />
+          </View>
 
           {/* Daily limit */}
           <DailyLimit used={5000} total={25000} />

@@ -56,7 +56,7 @@ export const InputField: React.FC<InputProps> = ({
     <View className="pt-2">
       {/* Label */}
       <View className="flex-row items-center">
-        <Text variant="sm" color="secondaryText">
+        <Text variant="md" color="secondaryText">
           {title}
         </Text>
         {required && (
@@ -70,14 +70,14 @@ export const InputField: React.FC<InputProps> = ({
       {/* Input container with border */}
       <View
         testID="input-container"
-        className="flex-row items-center border rounded-md px-3 py-3 my-3"
+        className="flex-row items-center border rounded-md p-3 my-3"
         style={{
           borderColor: isError
-            ? theme.colors.borderStatusDanger
+            ? theme.colors.error
             : isFocused
-              ? theme.colors.borderStatusActive
-              : theme.colors.borderSurfaceDefault,
-          backgroundColor: theme.colors.bgSurfaceSecondary,
+              ? theme.colors.primary
+              : theme.colors.border,
+          backgroundColor: theme.colors.cardBackground,
         }}
       >
         <TextInput
@@ -98,7 +98,7 @@ export const InputField: React.FC<InputProps> = ({
       {/* Optional Helper */}
       {(isError ? errorText : helperText) && (
         <Text
-          variant="sm"
+          variant="base"
           color={isError ? 'error' : 'secondaryText'}
           style={{ marginBottom: 8 }}
         >
