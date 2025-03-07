@@ -15,7 +15,7 @@ import { TransactionSection } from '@/components/cash/TransactionSection/Transac
 import { BankAccount, PaymentNetwork, Transaction } from '@/domains/model';
 import Text from '@/components/ui/Text';
 import { theme } from '@/themes';
-import { OccupationSelector } from '@/components/edd/OccupationSelector/OccupationSelector';
+import { Selector } from '@/components/edd/Selector/Selector';
 
 const transactions: Transaction[] = [
   {
@@ -95,7 +95,12 @@ export const HomeScreen = () => {
       style={{ backgroundColor: theme.colors.background }}
     >
       {/* Header */}
-      <Header title="" showBackButton showFaqButton />
+      <Header
+        title=""
+        showBackButton
+        showFaqButton
+        onPress={() => navigation.navigate('AddressSearch')}
+      />
       <ScrollView className="flex-1" showsVerticalScrollIndicator={false}>
         {/* Account Type */}
         <View className="flex-row items-center justify-center mb-5">
@@ -179,11 +184,7 @@ export const HomeScreen = () => {
 
         {/* Occupation Selector */}
         <View className="px-4 pt-4">
-          <OccupationSelector
-            value={occupation}
-            onChange={setOccupation}
-            required
-          />
+          <Selector value={occupation} onChange={setOccupation} required />
         </View>
       </ScrollView>
     </SafeAreaView>

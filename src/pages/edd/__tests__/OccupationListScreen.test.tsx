@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react-native';
-import { OccupationListScreen } from '../OccupationListScreen';
+import { SelectionListScreen } from '../SelectionListScreen';
 import { ThemeProvider } from 'styled-components/native';
 import { theme } from '@/themes';
 
@@ -46,7 +46,7 @@ describe('OccupationListScreen', () => {
 
   it('renders correctly with search bar and occupation list', () => {
     const { getByTestId, getByPlaceholderText } = renderWithTheme(
-      <OccupationListScreen {...(mockProps as any)} />
+      <SelectionListScreen {...(mockProps as any)} />
     );
 
     expect(getByTestId('occupation-search')).toBeTruthy();
@@ -56,7 +56,7 @@ describe('OccupationListScreen', () => {
 
   it('filters occupations based on search query', () => {
     const { getByTestId, queryByText } = renderWithTheme(
-      <OccupationListScreen {...(mockProps as any)} />
+      <SelectionListScreen {...(mockProps as any)} />
     );
 
     const searchInput = getByTestId('occupation-search');
@@ -71,7 +71,7 @@ describe('OccupationListScreen', () => {
 
   it('shows clear button when search has text and clears search when pressed', () => {
     const { getByTestId, queryByTestId } = renderWithTheme(
-      <OccupationListScreen {...(mockProps as any)} />
+      <SelectionListScreen {...(mockProps as any)} />
     );
 
     const searchInput = getByTestId('occupation-search');
@@ -98,7 +98,7 @@ describe('OccupationListScreen', () => {
     (global as any).occupationCallback = mockCallback;
 
     const { getByTestId } = renderWithTheme(
-      <OccupationListScreen {...(mockProps as any)} />
+      <SelectionListScreen {...(mockProps as any)} />
     );
 
     // Find and press an occupation item
@@ -112,7 +112,7 @@ describe('OccupationListScreen', () => {
 
   it('highlights the currently selected occupation', () => {
     const { getByTestId } = renderWithTheme(
-      <OccupationListScreen {...(mockProps as any)} />
+      <SelectionListScreen {...(mockProps as any)} />
     );
 
     const selectedItem = getByTestId('occupation-item-Creative Designer');
