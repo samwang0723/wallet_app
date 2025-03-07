@@ -1,4 +1,3 @@
-/* eslint-disable  @typescript-eslint/no-require-imports */
 import React, { useState } from 'react';
 import {
   View,

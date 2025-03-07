@@ -2,13 +2,14 @@ import React, { useState } from 'react';
 import { ScrollView, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Header } from '@/components/cash/Header/Header';
-import { RouteProp } from '@react-navigation/native';
+import { RouteProp, useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { RootStackParamList } from '@/navigation/types';
 import { Button } from '@/components/cash/Button/Button';
-import { SuccessModal } from '@/components/cash/SuccessModal/SuccessModal';
+import { SuccessModal } from '@/components/modals/SuccessModal';
 import Text from '@/components/ui/Text';
 import { theme } from '@/themes';
+import PasscodeModal from '@/components/modals/PasscodeModal';
 
 type ConfirmWithdrawalScreenNavigationProp = StackNavigationProp<
   RootStackParamList,
@@ -29,8 +30,15 @@ export const ConfirmWithdrawalScreen: React.FC<
   ConfirmWithdrawalScreenProps
 > = ({ route }) => {
   const [modalVisible, setModalVisible] = useState(false);
+  const [passcodeModalVisible, setPasscodeModalVisible] = useState(false);
   const { withdrawalInfo } = route.params;
+  const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
   const handleClick = () => {
+    setPasscodeModalVisible(true);
+  };
+  const handlePasscodeSubmit = (passcode: string) => {
+    console.log('Passcode submitted:', passcode);
+    setPasscodeModalVisible(false);
     setModalVisible(true);
   };
   return (
@@ -107,9 +115,20 @@ export const ConfirmWithdrawalScreen: React.FC<
       {/* Render the SuccessModal. It will appear if `modalVisible` is true */}
       <SuccessModal
         visible={modalVisible}
-        onDismiss={() => setModalVisible(false)}
+        onDismiss={() => {
+          setModalVisible(false);
+          navigation.reset({
+            index: 0,
+            routes: [{ name: 'Home' }],
+          });
+        }}
         subheading="Lorem ipsum dolor sit amet, consectetur"
         heading="Your bank transfer account is now ready to use"
+      />
+      <PasscodeModal
+        visible={passcodeModalVisible}
+        onSubmit={handlePasscodeSubmit}
+        onClose={() => setPasscodeModalVisible(false)}
       />
     </SafeAreaView>
   );
