@@ -10,7 +10,14 @@ module.exports = function (api) {
         {
           alias: {
             '@': './src',
+            '@assets': './src/assets',
           },
+        },
+      ],
+      [
+        'inline-dotenv',
+        {
+          path: '.env',
         },
       ],
     ],

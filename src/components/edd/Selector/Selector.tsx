@@ -5,15 +5,15 @@ import { StackNavigationProp } from '@react-navigation/stack';
 import { RootStackParamList } from '@/navigation/types';
 import Text from '@/components/ui/Text';
 import { theme } from '@/themes';
-import { setOccupationCallback } from '@/pages/edd/OccupationListScreen';
+import { setSelectionCallback } from '@/pages/edd/SelectionListScreen';
 
-interface OccupationSelectorProps {
+interface SelectorProps {
   value?: string;
   onChange: (occupation: string) => void;
   required?: boolean;
 }
 
-export const OccupationSelector: React.FC<OccupationSelectorProps> = ({
+export const Selector: React.FC<SelectorProps> = ({
   value,
   onChange,
   required = false,
@@ -21,8 +21,8 @@ export const OccupationSelector: React.FC<OccupationSelectorProps> = ({
   const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
 
   const handlePress = () => {
-    setOccupationCallback(onChange);
-    navigation.navigate('OccupationList', {
+    setSelectionCallback(onChange);
+    navigation.navigate('SelectionList', {
       currentValue: value,
     });
   };

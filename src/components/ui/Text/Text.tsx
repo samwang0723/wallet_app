@@ -11,7 +11,7 @@ type TextProps = {
 } & RNTextProps &
   ThemeStyleUtilProps;
 
-const Text = styled(RNText)<TextProps>`
+export const Text = styled(RNText)<TextProps>`
   font-size: ${({ variant }: { variant?: string }) =>
     theme.fontSizes[variant || 'base']}px;
   font-weight: ${({ weight }: { weight?: string }) =>
@@ -21,5 +21,3 @@ const Text = styled(RNText)<TextProps>`
   ${({ theme, ...props }: { theme: any } & TextProps) =>
     themeStyle({ ...props, theme })};
 `;
-
-export default Text;

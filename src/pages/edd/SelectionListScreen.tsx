@@ -14,28 +14,26 @@ import { StackNavigationProp } from '@react-navigation/stack';
 import { RootStackParamList } from '@/navigation/types';
 import { Header } from '@/components/cash/Header/Header';
 
-export type OccupationListScreenNavigationProp = StackNavigationProp<
+export type SelectionListScreenNavigationProp = StackNavigationProp<
   RootStackParamList,
-  'OccupationList'
+  'SelectionList'
 >;
 
-export type OccupationListScreenRouteProp = RouteProp<
+export type SelectionListScreenRouteProp = RouteProp<
   RootStackParamList,
-  'OccupationList'
+  'SelectionList'
 >;
 
-export type OccupationListScreenProps = {
-  navigation: OccupationListScreenNavigationProp;
-  route: OccupationListScreenRouteProp;
+export type SelectionListScreenProps = {
+  navigation: SelectionListScreenNavigationProp;
+  route: SelectionListScreenRouteProp;
 };
 
 // Create a callback ref to store the occupation selection callback
-export let occupationCallback: ((occupation: string) => void) | null = null;
+export let selectionCallback: ((selection: string) => void) | null = null;
 
-export const setOccupationCallback = (
-  callback: (occupation: string) => void
-) => {
-  occupationCallback = callback;
+export const setSelectionCallback = (callback: (selection: string) => void) => {
+  selectionCallback = callback;
 };
 
 const occupations = [
@@ -53,7 +51,7 @@ const occupations = [
   // Add more occupations as needed
 ];
 
-export const OccupationListScreen: React.FC<OccupationListScreenProps> = ({
+export const SelectionListScreen: React.FC<SelectionListScreenProps> = ({
   navigation,
   route,
 }) => {
@@ -69,9 +67,9 @@ export const OccupationListScreen: React.FC<OccupationListScreenProps> = ({
     setFilteredOccupations(filtered);
   }, []);
 
-  const handleSelect = (occupation: string) => {
-    if (occupationCallback) {
-      occupationCallback(occupation);
+  const handleSelect = (selection: string) => {
+    if (selectionCallback) {
+      selectionCallback(selection);
     }
     navigation.goBack();
   };

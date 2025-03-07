@@ -1,8 +1,8 @@
 import React from 'react';
 import { Modal, Pressable, View } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import Text from '@/components/ui/Text';
 import { theme } from '@/themes';
+import Text from '@/components/ui/Text';
 
 interface SuccessModalProps {
   /** Whether the modal is visible */
@@ -22,16 +22,11 @@ interface SuccessModalProps {
 export const SuccessModal: React.FC<SuccessModalProps> = ({
   visible,
   onDismiss,
-  subheading = 'Lorem ipsum dolor sit amet, consectetur',
-  heading = 'Your bank transfer account is now ready to use',
+  subheading = '',
+  heading = '',
 }) => {
   return (
-    <Modal
-      visible={visible}
-      transparent
-      animationType="fade"
-      onRequestClose={onDismiss}
-    >
+    <Modal visible={visible} transparent animationType="fade">
       {/* Pressable to capture "tap anywhere" and dismiss */}
       <Pressable
         className="flex-1"
@@ -49,7 +44,7 @@ export const SuccessModal: React.FC<SuccessModalProps> = ({
             </View>
 
             {/* Subheading */}
-            <Text variant="md" color="text" className="mb-5 text-center">
+            <Text variant="md" color="text">
               {subheading}
             </Text>
 
@@ -58,14 +53,14 @@ export const SuccessModal: React.FC<SuccessModalProps> = ({
               variant="xl"
               weight="bold"
               color="text"
-              className="text-center"
+              style={{ marginTop: 20, textAlign: 'center' }}
             >
               {heading}
             </Text>
           </View>
 
           {/* Bottom note */}
-          <Text variant="md" color="text" className="text-center mb-5">
+          <Text variant="md" color="text" style={{ marginBottom: 20 }}>
             Tap anywhere to continue
           </Text>
         </View>

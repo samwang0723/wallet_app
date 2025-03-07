@@ -1,8 +1,8 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react-native';
-import { OccupationSelector } from '../OccupationSelector';
+import { Selector } from '../Selector';
 import { useNavigation } from '@react-navigation/native';
-import { setOccupationCallback } from '@/pages/edd/OccupationListScreen';
+import { setOccupationCallback } from '@/pages/edd/SelectionListScreen';
 import { ThemeProvider } from 'styled-components/native';
 import { theme } from '@/themes';
 
@@ -34,7 +34,7 @@ describe('OccupationSelector', () => {
 
   it('renders correctly with default props', () => {
     const { getByText, getByTestId } = renderWithTheme(
-      <OccupationSelector onChange={mockOnChange} />
+      <Selector onChange={mockOnChange} />
     );
 
     expect(getByText('Occupation')).toBeTruthy();
@@ -44,7 +44,7 @@ describe('OccupationSelector', () => {
 
   it('renders with a selected value', () => {
     const { getByText } = renderWithTheme(
-      <OccupationSelector value="Software Engineer" onChange={mockOnChange} />
+      <Selector value="Software Engineer" onChange={mockOnChange} />
     );
 
     expect(getByText('Software Engineer')).toBeTruthy();
@@ -52,7 +52,7 @@ describe('OccupationSelector', () => {
 
   it('shows required asterisk when required prop is true', () => {
     const { getByText } = renderWithTheme(
-      <OccupationSelector onChange={mockOnChange} required />
+      <Selector onChange={mockOnChange} required />
     );
 
     expect(getByText('*')).toBeTruthy();
@@ -60,7 +60,7 @@ describe('OccupationSelector', () => {
 
   it('navigates to OccupationList and sets callback when pressed', () => {
     const { getByTestId } = renderWithTheme(
-      <OccupationSelector value="Developer" onChange={mockOnChange} />
+      <Selector value="Developer" onChange={mockOnChange} />
     );
 
     fireEvent.press(getByTestId('occupation-selector'));

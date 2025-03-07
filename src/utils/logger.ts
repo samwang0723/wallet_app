@@ -10,7 +10,12 @@ interface LogOptions {
 class Logger {
   private isDevelopment = __DEV__;
 
-  private log(level: LogLevel, message: string, error?: Error, options: LogOptions = {}) {
+  private log(
+    level: LogLevel,
+    message: string,
+    error?: Error,
+    options: LogOptions = {}
+  ) {
     const timestamp = new Date().toISOString();
     const logMessage = `[${timestamp}] ${level.toUpperCase()}: ${message}`;
 
@@ -32,7 +37,10 @@ class Logger {
     }
 
     // Show toast for info, warnings and errors if requested
-    if (options.showToast && (level === 'info' || level === 'warn' || level === 'error')) {
+    if (
+      options.showToast &&
+      (level === 'info' || level === 'warn' || level === 'error')
+    ) {
       Toast.show({
         type: level === 'error' ? 'error' : 'success',
         text1: message,
@@ -64,4 +72,4 @@ class Logger {
   }
 }
 
-export const logger = new Logger(); 
+export const logger = new Logger();

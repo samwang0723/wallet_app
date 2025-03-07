@@ -10,7 +10,8 @@ import { DepositScreen } from '@/pages/cash/DepositScreen';
 import { HomeScreen } from '@/pages/cash/HomeScreen';
 import { TransactionScreen } from '@/pages/cash/TransactionScreen';
 import { PaymentNetworkScreen } from '@/pages/cash/PaymentNetworkScreen';
-import { OccupationListScreen } from '@/pages/edd/OccupationListScreen';
+import { SelectionListScreen } from '@/pages/edd/SelectionListScreen';
+import { AddressSearchScreen } from '@/pages/edd/AddressSearchScreen';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -74,8 +75,13 @@ const AppNavigator = () => (
         options={{ headerShown: false }} // Optional: hide header
       />
       <Stack.Screen
-        name="OccupationList"
-        component={OccupationListScreen}
+        name="SelectionList"
+        component={SelectionListScreen}
+        options={{ headerShown: false }} // Optional: hide header
+      />
+      <Stack.Screen
+        name="AddressSearch"
+        component={AddressSearchScreen}
         options={{ headerShown: false }} // Optional: hide header
       />
     </Stack.Navigator>

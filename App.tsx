@@ -1,3 +1,5 @@
+import '@/utils/random-values-polyfill';
+
 import AppProvider from '@/context/AppProvider';
 import AppNavigator from '@/navigation/AppNavigator';
 import React from 'react';
